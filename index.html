@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <script>
+    (function(){
+      try {
+        var saved = localStorage.getItem('nextgen-theme');
+        var theme = saved || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        if (theme === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+      } catch (e) {}
+    })();
+  </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>NextGen Skills Foundation | Preparing the Next Generation with Essential Skills</title>
@@ -56,13 +65,41 @@
     --mist:#EEF4F0;
     --line:#DFE7E2;
     --white:#FFFFFF;
+    --heading:#0A2A45;
+    --surface:#FFFFFF;
+    --header-bg: rgba(251,252,253,0.9);
     --radius-s:10px;
     --radius-m:16px;
     --radius-l:28px;
     --max:1180px;
     --shadow: 0 20px 50px -25px rgba(10,42,69,0.35);
     --ease: cubic-bezier(.22,.61,.36,1);
+    color-scheme: light;
   }
+
+  /* ---------- Dark theme ---------- */
+  html[data-theme="dark"]{
+    --ink:#DDE6EE;
+    --ink-soft:#93A2B0;
+    --paper:#0B141F;
+    --mist:#111C29;
+    --line:#233240;
+    --white:#152230;
+    --heading:#F1F6FB;
+    --surface:#152230;
+    --header-bg: rgba(11,20,31,0.86);
+    --shadow: 0 20px 50px -25px rgba(0,0,0,0.55);
+    color-scheme: dark;
+  }
+  html[data-theme="dark"] body{ background:var(--paper); }
+  html[data-theme="dark"] .hero-tagline{ border-top-color:rgba(255,255,255,.12); }
+  html[data-theme="dark"] .field input,
+  html[data-theme="dark"] .field select,
+  html[data-theme="dark"] .field textarea{ background:var(--paper); color:var(--ink); border-color:var(--line); }
+  html[data-theme="dark"] .field input:focus,
+  html[data-theme="dark"] .field select:focus,
+  html[data-theme="dark"] .field textarea:focus{ border-color:var(--blue); }
+  html[data-theme="dark"] .choice-card input:checked + label{ background:rgba(20,112,184,.18); }
 
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
@@ -85,7 +122,7 @@
     font-weight:600;
     line-height:1.1;
     margin:0;
-    color:var(--navy);
+    color:var(--heading);
     letter-spacing:-0.01em;
   }
   p{margin:0; line-height:1.65; color:var(--ink-soft);}
@@ -112,7 +149,7 @@
   .btn-primary:hover{ background:var(--green-deep); transform:translateY(-2px); box-shadow:0 18px 34px -12px rgba(3,150,54,.55);}
   .btn-ghost-light{ border-color:rgba(255,255,255,.55); color:#fff; }
   .btn-ghost-light:hover{ border-color:#fff; background:rgba(255,255,255,.1); transform:translateY(-2px);}
-  .btn-outline-navy{ border-color:var(--navy); color:var(--navy); }
+  .btn-outline-navy{ border-color:var(--heading); color:var(--heading); }
   .btn-outline-navy:hover{ background:var(--navy); color:#fff; transform:translateY(-2px);}
   .btn-blue{ background:var(--blue); color:#fff; box-shadow:0 14px 30px -12px rgba(20,112,184,.5);}
   .btn-blue:hover{ background:var(--blue-deep); transform:translateY(-2px);}
@@ -127,7 +164,7 @@
   /* ---------- Header ---------- */
   header{
     position:sticky; top:0; z-index:100;
-    background:rgba(251,252,253,0.9);
+    background:var(--header-bg);
     backdrop-filter:saturate(180%) blur(14px);
     border-bottom:1px solid var(--line);
   }
@@ -139,8 +176,17 @@
   nav.main-nav a::after{ content:""; position:absolute; left:0; bottom:-3px; width:0; height:2px; background:var(--green); transition:width .25s var(--ease); }
   nav.main-nav a:hover::after{ width:100%; }
   .nav-actions{ display:flex; align-items:center; gap:14px; }
+  .theme-toggle{
+    display:inline-flex; align-items:center; justify-content:center; width:38px; height:38px;
+    border-radius:50%; border:1px solid var(--line); background:var(--surface); color:var(--heading);
+    cursor:pointer; transition:background .2s var(--ease), border-color .2s var(--ease), transform .2s var(--ease);
+  }
+  .theme-toggle:hover{ transform:translateY(-1px); border-color:var(--blue); }
+  .theme-toggle .icon-moon{ display:none; }
+  html[data-theme="dark"] .theme-toggle .icon-sun{ display:none; }
+  html[data-theme="dark"] .theme-toggle .icon-moon{ display:block; }
   .menu-toggle{ display:none; background:none; border:none; cursor:pointer; padding:8px; }
-  .menu-toggle span{ display:block; width:24px; height:2px; background:var(--navy); margin:5px 0; border-radius:2px; transition:transform .25s var(--ease), opacity .25s var(--ease);}
+  .menu-toggle span{ display:block; width:24px; height:2px; background:var(--heading); margin:5px 0; border-radius:2px; transition:transform .25s var(--ease), opacity .25s var(--ease);}
 
   @media (max-width: 940px){
     nav.main-nav{
@@ -189,7 +235,7 @@
   .trust-row{
     display:grid; grid-template-columns:repeat(5,1fr); gap:0;
     border:1px solid var(--line); border-radius:var(--radius-m); overflow:hidden;
-    background:#fff; box-shadow:var(--shadow); margin-top:-34px; position:relative; z-index:5;
+    background:var(--surface); box-shadow:var(--shadow); margin-top:-34px; position:relative; z-index:5;
   }
   .trust-item{ padding:26px 20px; text-align:left; border-right:1px solid var(--line); }
   .trust-item:last-child{ border-right:none; }
@@ -219,7 +265,7 @@
   .about-points{ list-style:none; margin:24px 0 0; padding:0; display:flex; flex-direction:column; gap:14px; }
   .about-points li{ display:flex; gap:12px; font-size:15px; color:var(--ink-soft); }
   .partner-card{
-    background:#fff; border:1px solid var(--line); border-radius:var(--radius-m); padding:32px;
+    background:var(--surface); border:1px solid var(--line); border-radius:var(--radius-m); padding:32px;
     box-shadow:var(--shadow);
   }
   .partner-card .partner-eyebrow{ font-size:12.5px; font-weight:700; letter-spacing:.03em; color:var(--green-deep); background:#E6F7EA; padding:6px 12px; border-radius:100px; display:inline-block; margin-bottom:16px;}
@@ -262,7 +308,7 @@
   /* ---------- Real photo gallery ---------- */
   .gallery-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:20px; }
   .gallery-item{
-    border-radius:var(--radius-m); overflow:hidden; border:1px solid var(--line); background:#fff;
+    border-radius:var(--radius-m); overflow:hidden; border:1px solid var(--line); background:var(--surface);
     box-shadow:0 16px 36px -24px rgba(10,42,69,.3);
   }
   .gallery-item img{ width:100%; aspect-ratio:4/3; object-fit:cover; }
@@ -281,22 +327,30 @@
   @media (max-width:480px){ .impact-num{ font-size:2rem; } }
 
   /* ---------- Testimonials ---------- */
-  .testi-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:26px; }
+  .testi-scroll{
+    display:flex; gap:22px; overflow-x:auto; padding:8px 4px 24px; margin:0 -4px;
+    scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch;
+    scrollbar-width:thin; scrollbar-color:var(--green) var(--mist);
+  }
+  .testi-scroll::-webkit-scrollbar{ height:8px; }
+  .testi-scroll::-webkit-scrollbar-track{ background:var(--mist); border-radius:8px; }
+  .testi-scroll::-webkit-scrollbar-thumb{ background:var(--green); border-radius:8px; }
   .testi-card{
-    background:#fff; border:1px solid var(--line); border-radius:var(--radius-m); padding:30px 26px;
+    background:var(--surface); border:1px solid var(--line); border-radius:var(--radius-m); padding:30px 26px;
     display:flex; flex-direction:column; gap:16px;
     transition:transform .3s var(--ease), box-shadow .3s var(--ease);
+    flex:0 0 320px; scroll-snap-align:start;
   }
   .testi-card:hover{ transform:translateY(-6px); box-shadow:0 26px 46px -28px rgba(10,42,69,.35); }
   .testi-stars{ color:var(--green); font-size:15px; letter-spacing:2px; }
   .testi-card p.quote{ font-size:15px; color:var(--ink); font-style:italic; line-height:1.6; }
-  .testi-name{ font-size:13.5px; font-weight:700; color:var(--navy); }
+  .testi-name{ font-size:13.5px; font-weight:700; color:var(--heading); }
   .testi-context{ font-size:12.5px; color:var(--ink-soft); }
-  @media (max-width:900px){ .testi-grid{ grid-template-columns:1fr; } }
+  @media (max-width:620px){ .testi-card{ flex-basis:270px; } }
 
   /* ---------- Partners ---------- */
   .partner-highlight{
-    display:flex; align-items:center; gap:20px; background:#fff; border:1px solid var(--line);
+    display:flex; align-items:center; gap:20px; background:var(--surface); border:1px solid var(--line);
     border-radius:var(--radius-m); padding:26px 30px; margin-bottom:32px; box-shadow:var(--shadow);
   }
   .partner-highlight .ph-icon{ flex-shrink:0; width:48px; height:48px; border-radius:12px; background:var(--mist); display:flex; align-items:center; justify-content:center; }
@@ -304,14 +358,14 @@
   .partner-highlight p{ font-size:14px; }
   .sponsor-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:10px 16px; }
   .sponsor-chip{
-    background:#fff; border:1px solid var(--line); border-radius:10px; padding:12px 14px;
+    background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:12px 14px;
     font-size:13px; font-weight:600; color:var(--ink-soft); text-align:center;
   }
   @media (max-width:860px){ .sponsor-grid{ grid-template-columns:repeat(2,1fr); } }
 
   /* ---------- Onboarding / Get Involved form ---------- */
   .apply-card{
-    max-width:640px; margin:0 auto; background:#fff; border:1px solid var(--line); border-radius:var(--radius-l);
+    max-width:640px; margin:0 auto; background:var(--surface); border:1px solid var(--line); border-radius:var(--radius-l);
     padding:44px 44px 40px; box-shadow:var(--shadow); position:relative; overflow:hidden;
   }
   .apply-card::before{ content:""; position:absolute; top:0; left:0; right:0; height:6px; background:linear-gradient(90deg, var(--blue), var(--green)); }
@@ -327,10 +381,10 @@
   .apply-step h3{ font-size:21px; margin-bottom:20px; }
   .apply-hint{ font-size:14px; margin-bottom:20px; }
   .field{ margin-bottom:20px; }
-  .field label{ display:block; font-size:13.5px; font-weight:600; color:var(--navy); margin-bottom:8px; }
+  .field label{ display:block; font-size:13.5px; font-weight:600; color:var(--heading); margin-bottom:8px; }
   .field input, .field select, .field textarea{
     width:100%; padding:13px 16px; border:1.5px solid var(--line); border-radius:10px;
-    font-family:'Inter',sans-serif; font-size:15px; color:var(--ink); background:#fff;
+    font-family:'Inter',sans-serif; font-size:15px; color:var(--ink); background:var(--surface);
     transition:border-color .2s var(--ease); resize:vertical;
   }
   .field input:focus, .field select:focus, .field textarea:focus{ outline:none; border-color:var(--blue); }
@@ -343,7 +397,7 @@
   .apply-summary{ margin:0 0 26px; display:flex; flex-direction:column; gap:14px; }
   .apply-summary div{ display:flex; justify-content:space-between; gap:14px; padding-bottom:14px; border-bottom:1px solid var(--line); font-size:14.5px; }
   .apply-summary dt{ color:var(--ink-soft); font-weight:600; }
-  .apply-summary dd{ margin:0; color:var(--navy); font-weight:600; text-align:right; max-width:60%; }
+  .apply-summary dd{ margin:0; color:var(--heading); font-weight:600; text-align:right; max-width:60%; }
   .email-fallback{ text-align:center; margin-top:22px; font-size:14px; color:var(--ink-soft); }
   .email-fallback a{ color:var(--blue-deep); font-weight:600; text-decoration:none; }
   @media (max-width:560px){
@@ -394,6 +448,10 @@
     </nav>
     <div class="nav-actions">
       <a href="#get-involved" class="btn btn-primary btn-sm btn-primary-desktop">Get Involved</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Switch to dark theme">
+        <svg class="icon-sun" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.8"/><g stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="12" y1="1.5" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22.5"/><line x1="1.5" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22.5" y2="12"/><line x1="4.2" y1="4.2" x2="6" y2="6"/><line x1="18" y1="18" x2="19.8" y2="19.8"/><line x1="4.2" y1="19.8" x2="6" y2="18"/><line x1="18" y1="6" x2="19.8" y2="4.2"/></g></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M20.7 14.8A8.6 8.6 0 0 1 9.2 3.3a8.8 8.8 0 1 0 11.5 11.5Z"/></svg>
+      </button>
       <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mainNav">
         <span></span><span></span><span></span>
       </button>
@@ -584,12 +642,12 @@
         <h2>What families are telling us.</h2>
         <p>Feedback from parents and guardians of students who took part in our Summer Skills Workshop in Electrical Installation.</p>
       </div>
-      <div class="testi-grid reveal">
+      <div class="testi-scroll reveal">
         <div class="testi-card">
           <div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p class="quote">&ldquo;Thank you so much for this wonderful opportunity that was presented to my son. My son enjoyed himself.&rdquo;</p>
+          <p class="quote">&ldquo;I cannot speak highly enough of the electrical training program my son recently completed&hellip; What stood out most was the professionalism, patience, and genuine passion Mr. Phillip brought to every session. My son came home daily filled with excitement about what he had learned. I wholeheartedly recommend this program to any parent looking to invest in their child's technical and vocational future.&rdquo;</p>
           <div>
-            <div class="testi-name">Sadia N. Foster</div>
+            <div class="testi-name">Cherian Alcindor</div>
             <div class="testi-context">Parent &middot; Summer Skills Workshop</div>
           </div>
         </div>
@@ -598,15 +656,39 @@
           <p class="quote">&ldquo;My son enjoyed the workshop! This was a new experience for him and he's so happy.&rdquo;</p>
           <div>
             <div class="testi-name">Alanda Seraphine</div>
-            <div class="testi-context">Parent &middot; Summer Skills Workshop</div>
+            <div class="testi-context">Parent</div>
           </div>
         </div>
         <div class="testi-card">
           <div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p class="quote">&ldquo;I would like to thank you for giving my son this opportunity and it is greatly appreciated &mdash; a new learning environment. Thanks to you and your team. God's Blessings.&rdquo;</p>
+          <p class="quote">&ldquo;Good day Miss, I would like to thank you for giving my son this opportunity, a new learning environment. Thanks to you and your team. God's Blessings.&rdquo;</p>
           <div>
             <div class="testi-name">Karan Samuel</div>
-            <div class="testi-context">Parent &middot; Summer Skills Workshop</div>
+            <div class="testi-context">Parent</div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="quote">&ldquo;My son can't stop talking about this workshop, he gathered a lot. I want to say a big thank you. God Bless!&rdquo;</p>
+          <div>
+            <div class="testi-name">Jude John</div>
+            <div class="testi-context">Parent</div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="quote">&ldquo;My son enjoyed the workshop as it greatly impacted his life. I greatly appreciate what you did for my son.&rdquo;</p>
+          <div>
+            <div class="testi-name">Cathy Mark-Maurice</div>
+            <div class="testi-context">Parent</div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="quote">&ldquo;I spoke to my son about the workshop. Although he didn't make it for all of the days due to illness, he said he enjoyed it and was happy to receive a certificate. I look forward to future workshops.&rdquo;</p>
+          <div>
+            <div class="testi-name">Satra St. Louis</div>
+            <div class="testi-context">Parent</div>
           </div>
         </div>
       </div>
@@ -786,6 +868,28 @@
 
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Light / dark theme toggle
+  (function(){
+    const html = document.documentElement;
+    const btn = document.getElementById('themeToggle');
+    function setLabel(){
+      const isDark = html.getAttribute('data-theme') === 'dark';
+      btn.setAttribute('aria-label', isDark ? 'Switch to light theme' : 'Switch to dark theme');
+    }
+    setLabel();
+    btn.addEventListener('click', () => {
+      const isDark = html.getAttribute('data-theme') === 'dark';
+      if (isDark) {
+        html.removeAttribute('data-theme');
+        try { localStorage.setItem('nextgen-theme', 'light'); } catch(e) {}
+      } else {
+        html.setAttribute('data-theme', 'dark');
+        try { localStorage.setItem('nextgen-theme', 'dark'); } catch(e) {}
+      }
+      setLabel();
+    });
+  })();
 
   const menuToggle = document.getElementById('menuToggle');
   const mainNav = document.getElementById('mainNav');
