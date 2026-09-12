@@ -7,11 +7,11 @@
 <!-- Security headers (meta-tag equivalents; see also Cloudflare header setup for HSTS/X-Frame-Options at the HTTP layer) -->
 <meta http-equiv="Content-Security-Policy"
       content="default-src 'self';
-               script-src 'self' 'unsafe-inline';
-               style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+               script-src 'self' 'unsafe-inline' https://cdn-cookieyes.com https://www.googletagmanager.com;
+               style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn-cookieyes.com;
                font-src https://fonts.gstatic.com;
                img-src 'self' data: https:;
-               connect-src 'self' https://formspree.io;
+               connect-src 'self' https://formspree.io https://cdn-cookieyes.com https://log.cookieyes.com https://www.google-analytics.com https://analytics.google.com https://region1.google-analytics.com;
                object-src 'none';
                base-uri 'self';
                form-action 'self' https://formspree.io;">
@@ -29,6 +29,27 @@
       if (theme === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
     } catch (e) {}
   })();
+</script>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     COOKIE CONSENT (CookieYes) — must load before Google Analytics 4
+     below so it can auto-block GA4 until a visitor gives consent. See
+     /legal.html Section 5 for the disclosure this pairs with.
+     TODO: replace YOUR_COOKIEYES_ID with the real script ID once the
+     CookieYes account for nextgenskillsfoundation.com is created.
+     ══════════════════════════════════════════════════════════════════ -->
+<script id="cookieyes" type="text/javascript" src="https://cdn-cookieyes.com/client_data/YOUR_COOKIEYES_ID/script.js"></script>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     GOOGLE ANALYTICS 4 — CookieYes auto-blocks this until consent.
+     TODO: replace G-XXXXXXXXXX with the real GA4 Measurement ID.
+     ══════════════════════════════════════════════════════════════════ -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
 </script>
 
 <title>NextGen Skills Foundation | CVQ Training, Saint Lucia</title>
@@ -1071,7 +1092,7 @@
         <li><a href="https://www.instagram.com/nextgenskillsfoundation/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
         <li><a href="mailto:nextgenskillsfoundation@gmail.com">Email us</a></li>
         <li><a href="index.html">Shan-Phill Training</a></li>
-        <li><a href="/privacy-policy.html">Privacy Policy</a></li>
+        <li><a href="/legal.html">Legal &amp; Privacy</a></li>
       </ul>
     </div>
     <div class="footer-col">
