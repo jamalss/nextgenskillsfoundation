@@ -363,6 +363,36 @@
   }
   @media (max-width:860px){ .sponsor-grid{ grid-template-columns:repeat(2,1fr); } }
 
+  /* ---------- Endorsements & recognition ---------- */
+  .gov-badge{
+    display:flex; align-items:center; gap:20px; background:var(--surface);
+    border:1.5px solid var(--green); border-radius:var(--radius-m); padding:26px 30px;
+    margin-bottom:32px; box-shadow:var(--shadow);
+  }
+  .gov-badge .gb-icon{
+    flex-shrink:0; width:52px; height:52px; border-radius:12px; background:rgba(4,191,70,.12);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .gov-badge h4{ font-size:17px; margin-bottom:4px; }
+  .gov-badge p{ font-size:14px; margin-bottom:10px; }
+  .gov-badge .ref-link{ font-size:13.5px; }
+  .ref-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
+  .ref-card{
+    background:var(--surface); border:1px solid var(--line); border-radius:var(--radius-m);
+    padding:26px 24px; display:flex; flex-direction:column; gap:14px;
+    transition:transform .3s var(--ease), box-shadow .3s var(--ease);
+  }
+  .ref-card:hover{ transform:translateY(-6px); box-shadow:0 26px 46px -28px rgba(10,42,69,.35); }
+  .ref-org{ font-size:14.5px; font-weight:700; color:var(--heading); }
+  .ref-card p.ref-quote{ font-size:14px; color:var(--ink); font-style:italic; line-height:1.6; flex-grow:1; }
+  .ref-signer{ font-size:12.5px; color:var(--ink-soft); }
+  .ref-link{
+    display:inline-flex; align-items:center; gap:6px; font-size:13px; font-weight:700;
+    color:var(--blue); text-decoration:none;
+  }
+  .ref-link:hover{ text-decoration:underline; }
+  @media (max-width:900px){ .ref-grid{ grid-template-columns:1fr; } .gov-badge{ flex-direction:column; align-items:flex-start; } }
+
   /* ---------- Onboarding / Get Involved form ---------- */
   .apply-card{
     max-width:640px; margin:0 auto; background:var(--surface); border:1px solid var(--line); border-radius:var(--radius-l);
@@ -444,6 +474,7 @@
       <a href="#programme">Our Work</a>
       <a href="#impact">Impact</a>
       <a href="#testimonials">Testimonials</a>
+      <a href="#endorsements">Recognition</a>
       <a href="#get-involved">Contact</a>
     </nav>
     <div class="nav-actions">
@@ -738,6 +769,73 @@
         <div class="sponsor-chip">Petra's Wine &amp; Dine</div>
         <div class="sponsor-chip">Sandals La Toc</div>
         <div class="sponsor-chip">Pinch of Thyme</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ENDORSEMENTS & RECOGNITION ============ -->
+  <section class="section section-alt" id="endorsements">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="eyebrow">Recognition &amp; endorsements</div>
+        <h2>Recognized, referenced, trusted.</h2>
+        <p>NextGen Skills Foundation is a Department-recognized NGO, and our sole training delivery partner, Shan-Phill Training, is independently endorsed by the organizations below.</p>
+      </div>
+
+      <div class="gov-badge reveal">
+        <div class="gb-icon">
+          <svg width="26" height="26" viewBox="0 0 26 26" fill="none"><path d="M13 3L21 7V13C21 18 17.5 21.7 13 23C8.5 21.7 5 18 5 13V7L13 3Z" stroke="#04BF46" stroke-width="2" stroke-linejoin="round"/><path d="M9.5 13L12 15.5L17 10" stroke="#04BF46" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div>
+          <h4>Recognized by the Government of Saint Lucia</h4>
+          <p>NextGen Skills Foundation is formally recognized by the Ministry of Equity, Social Justice, Gender, Older Persons, Labour, Cooperatives and Consumer Affairs as a legitimate organization operating in compliance with the Non-Governmental Organizations Act.</p>
+          <a class="ref-link" href="https://raw.githubusercontent.com/jamalss/nextgenskillsfoundation/main/letters/letter-of_recognition-as-legitimate-organization-by-permanent-sec-ministry-of-labor.pdf" target="_blank" rel="noopener">View recognition letter &#8599;</a>
+        </div>
+      </div>
+
+      <div class="ref-grid reveal">
+        <div class="ref-card">
+          <div class="ref-org">Corinth Secondary School</div>
+          <p class="ref-quote">&ldquo;Our experience was positive. They demonstrated professionalism in the delivery of the programme&hellip; our students successfully completed their CVQ programme and benefited from the knowledge and practical skills gained.&rdquo;</p>
+          <div class="ref-signer">Chantal Winter-Felix &middot; Year Head &amp; Head of Department</div>
+          <a class="ref-link" href="https://raw.githubusercontent.com/jamalss/nextgenskillsfoundation/main/letters/chantal-winter-felix-corinth-secondary-school-endorsement-letter.pdf" target="_blank" rel="noopener">View full letter &#8599;</a>
+        </div>
+        <div class="ref-card">
+          <div class="ref-org">SLASPA &mdash; Saint Lucia Air &amp; Sea Ports Authority</div>
+          <p class="ref-quote">&ldquo;Facilitated by Shan-Phil Training Institute, a professional and success driven organization&hellip; we can, therefore, comfortably recommend their business as an excellent provider of the aforementioned services.&rdquo;</p>
+          <div class="ref-signer">Irene St. Croix &middot; Senior Manager, Human Resource</div>
+          <a class="ref-link" href="https://raw.githubusercontent.com/jamalss/nextgenskillsfoundation/main/letters/SLASPA-letter-of-recommendation.pdf" target="_blank" rel="noopener">View full letter &#8599;</a>
+        </div>
+        <div class="ref-card">
+          <div class="ref-org">Real Foods Inc. (KFC Saint Lucia)</div>
+          <p class="ref-quote">&ldquo;She consistently delivered high-quality sessions, ensuring that participants gained valuable knowledge and skills&hellip; I highly recommend Shan Phill training.&rdquo;</p>
+          <div class="ref-signer">Sophia Jardine-Frederick &middot; Human Resources Manager</div>
+          <a class="ref-link" href="https://raw.githubusercontent.com/jamalss/nextgenskillsfoundation/main/letters/KFC-letter-of-recommendation-for-Shan-Phill-Training.pdf" target="_blank" rel="noopener">View full letter &#8599;</a>
+        </div>
+        <div class="ref-card">
+          <div class="ref-org">SEEDS Resource Center &middot; The Ubuntu Movement</div>
+          <p class="ref-quote">&ldquo;Her depth of knowledge on the subject matter, coupled with her dynamic presentation style, captivated our audience, and left a lasting impression on all our participants.&rdquo;</p>
+          <div class="ref-signer">Snard CJ Alexander &middot; Program Coordinator</div>
+          <a class="ref-link" href="https://raw.githubusercontent.com/jamalss/nextgenskillsfoundation/main/letters/letter-of-recommendation-for-Shan-Phill-Training-by-SEEDS-coordinator-snard-alexander.pdf" target="_blank" rel="noopener">View full letter &#8599;</a>
+        </div>
+        <div class="ref-card">
+          <div class="ref-org">National Conservation Authority</div>
+          <p class="ref-quote">&ldquo;I have personally witnessed the impact of Shan-Phill Training programs on employees in my organization&hellip; their professionalism, integrity, and passion for empowering others through education are truly commendable.&rdquo;</p>
+          <div class="ref-signer">James Perineau &middot; General Manager</div>
+          <a class="ref-link" href="https://raw.githubusercontent.com/jamalss/nextgenskillsfoundation/main/letters/NCA-letter-of-recommendation-by-GM-james-perineau.pdf" target="_blank" rel="noopener">View full letter &#8599;</a>
+        </div>
+        <div class="ref-card">
+          <div class="ref-org">Kick Start Riding &amp; Driving School</div>
+          <p class="ref-quote">&ldquo;She was able to turn the jargon into relatable scenarios specific to our line of work, which effectively engaged our staff, encouraged active participation and fostered enthusiasm for the subject matter.&rdquo;</p>
+          <div class="ref-signer">Avellina Stacy Nelson &middot; Owner/Director</div>
+          <a class="ref-link" href="https://raw.githubusercontent.com/jamalss/nextgenskillsfoundation/main/letters/KICK-START-riding-and-driving-school-letter-of_recommendation-by-owner-director-avellina-stacy-nelson.pdf" target="_blank" rel="noopener">View full letter &#8599;</a>
+        </div>
+        <div class="ref-card">
+          <div class="ref-org">St. Lucia Industrial &amp; Small Business Association (SLISBA)</div>
+          <p class="ref-quote">&ldquo;Shaniel is a very committed and passionate trainer, who is always willing to go way beyond the call of duty&hellip; I recommend Shaniel very highly, for any work which involves outreach and training of MSMEs.&rdquo;</p>
+          <div class="ref-signer">Flavia Cherry &middot; Executive Vice President, SLISBA</div>
+          <a class="ref-link" href="https://raw.githubusercontent.com/jamalss/nextgenskillsfoundation/main/letters/SLISBA-Reference-For-Training-by-Flavia-Cherry-Exec-Vice-President.jpg" target="_blank" rel="noopener">View full letter &#8599;</a>
+        </div>
       </div>
     </div>
   </section>
