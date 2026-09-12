@@ -4,4 +4,4 @@ Allow: /
 Disallow: /admin/
 Disallow: /.env
 
-Sitemap: https://[CLIENT-DOMAIN]/sitemap.xml
+Sitemap: https://www.nextgenskillsfoundation.com/sitemap.xml
