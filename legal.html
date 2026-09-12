@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Security headers -->
+<meta http-equiv="Content-Security-Policy"
+      content="default-src 'self';
+               script-src 'self' 'unsafe-inline' https://cdn-cookieyes.com https://www.googletagmanager.com;
+               style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn-cookieyes.com;
+               font-src https://fonts.gstatic.com;
+               img-src 'self' data: https:;
+               connect-src 'self' https://cdn-cookieyes.com https://log.cookieyes.com https://www.google-analytics.com https://analytics.google.com https://region1.google-analytics.com;
+               object-src 'none';
+               base-uri 'self';
+               form-action 'self';">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Permissions-Policy"
+      content="camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()">
+
+<!-- Theme detection — must run before first paint to avoid a light/dark flash. Shares the same
+     storage key as index.html so a visitor's preference stays consistent across the site. -->
+<script>
+  (function(){
+    try {
+      var saved = localStorage.getItem('nextgen-theme');
+      var theme = saved || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      if (theme === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+    } catch (e) {}
+  })();
+</script>
+
+<title>Legal &amp; Privacy | NextGen Skills Foundation</title>
+<meta name="description" content="How NextGen Skills Foundation collects, uses and protects information, and your rights under GDPR, CCPA and Saint Lucia law.">
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://www.nextgenskillsfoundation.com/legal.html">
+
+<meta name="theme-color" content="#0A2A45" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0B141F" media="(prefers-color-scheme: dark)">
+
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Legal & Privacy | NextGen Skills Foundation">
+<meta property="og:description" content="How NextGen Skills Foundation collects, uses and protects information, and your rights under GDPR, CCPA and Saint Lucia law.">
+<meta property="og:url" content="https://www.nextgenskillsfoundation.com/legal.html">
+<meta property="og:site_name" content="NextGen Skills Foundation">
+<meta property="og:image" content="https://www.nextgenskillsfoundation.com/assets/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://www.nextgenskillsfoundation.com/assets/og-image.jpg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet" media="print" onload="this.media='all'">
+<noscript>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</noscript>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     COOKIE CONSENT (CookieYes) — must load before Google Analytics 4
+     below so it can auto-block GA4 until a visitor gives consent.
+     TODO: replace YOUR_COOKIEYES_ID with the real script ID once the
+     CookieYes account for nextgenskillsfoundation.com is created and
+     the ~$10/mo plan is active. Get it from the CookieYes dashboard
+     under Websites → Install Code.
+     ══════════════════════════════════════════════════════════════════ -->
+<script id="cookieyes" type="text/javascript" src="https://cdn-cookieyes.com/client_data/YOUR_COOKIEYES_ID/script.js"></script>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     GOOGLE ANALYTICS 4 — CookieYes auto-blocks this script until the
+     visitor consents, so it is safe to include normally (no need to
+     mark it type="text/plain"). TODO: replace G-XXXXXXXXXX with the
+     real GA4 Measurement ID from analytics.google.com once the
+     property is created.
+     ══════════════════════════════════════════════════════════════════ -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
+
+<style>
+  :root{
+    --navy:#0A2A45; --navy-2:#0F3459; --blue:#1470B8; --blue-deep:#0D5690;
+    --green:#04BF46; --green-deep:#027A2E;
+    --ink:#16202B; --ink-soft:#4B5866; --paper:#FBFCFD; --mist:#EEF4F0; --line:#DFE7E2;
+    --white:#FFFFFF; --heading:#0A2A45; --surface:#FFFFFF;
+    --radius-s:10px; --radius-m:16px; --radius-l:24px;
+    --shadow: 0 20px 50px -25px rgba(10,42,69,0.35);
+    color-scheme: light;
+  }
+  html[data-theme="dark"]{
+    --ink:#DDE6EE; --ink-soft:#93A2B0; --paper:#0B141F; --mist:#111C29; --line:#233240;
+    --white:#152230; --heading:#F1F6FB; --surface:#152230;
+    --shadow: 0 20px 50px -25px rgba(0,0,0,0.55);
+    color-scheme: dark;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth; overflow-x:hidden; max-width:100%;}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} }
+  body{ margin:0; font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif; color:var(--ink); background:var(--paper); overflow-x:hidden; line-height:1.65; }
+  h1,h2,h3{ font-family:'Fraunces',serif; color:var(--heading); }
+  a{ color:var(--blue); }
+  a:focus-visible, button:focus-visible, input:focus-visible{ outline:3px solid var(--blue); outline-offset:3px; border-radius:4px; }
+  .skip-link{ position:absolute; top:-100%; left:1rem; background:var(--navy); color:#fff; padding:.65rem 1.1rem; border-radius:0 0 8px 8px; z-index:9999; font-weight:600; text-decoration:none; }
+  .skip-link:focus{ top:0; }
+
+  header.site-header{ background:var(--navy); padding:18px 24px; position:sticky; top:0; z-index:50; }
+  .header-inner{ max-width:1180px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:16px; }
+  .header-inner a.brand{ color:#fff; text-decoration:none; font-weight:700; font-family:'Fraunces',serif; font-size:19px; }
+  .header-inner a.back{ color:#DDE6EE; text-decoration:none; font-size:14px; font-weight:600; white-space:nowrap; }
+  .header-inner a.back:hover{ color:#fff; }
+
+  .legal-hero{ background:linear-gradient(160deg, var(--navy), var(--navy-2)); color:#fff; padding:52px 24px 40px; text-align:center; }
+  .legal-hero h1{ color:#fff; font-size:clamp(1.8rem,4vw,2.4rem); margin:0 0 10px; }
+  .legal-hero p{ color:#C9D5E0; max-width:640px; margin:0 auto 20px; font-size:15.5px; }
+  .pills{ display:flex; flex-wrap:wrap; gap:10px; justify-content:center; }
+  .pill{ background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.22); color:#fff; font-size:12.5px; font-weight:600; padding:6px 14px; border-radius:100px; letter-spacing:.02em; }
+
+  .layout{ max-width:1180px; margin:0 auto; padding:40px 24px 90px; display:grid; grid-template-columns:240px 1fr; gap:44px; align-items:start; }
+  @media (max-width:900px){ .layout{ grid-template-columns:1fr; } }
+
+  .toc{ position:sticky; top:88px; background:var(--mist); border:1px solid var(--line); border-radius:var(--radius-m); padding:18px 20px; }
+  .toc h2{ font-size:14px; text-transform:uppercase; letter-spacing:.06em; margin:0 0 12px; color:var(--ink-soft); font-family:'Inter',sans-serif; font-weight:700; }
+  .toc ol{ margin:0; padding:0 0 0 18px; font-size:13.5px; }
+  .toc li{ margin-bottom:7px; }
+  .toc a{ color:var(--ink-soft); text-decoration:none; }
+  .toc a:hover{ color:var(--blue); }
+  @media (max-width:900px){
+    .toc{ position:static; }
+    .toc[data-collapsed] ol{ display:none; }
+  }
+  .toc-toggle{ display:none; }
+  @media (max-width:900px){
+    .toc-toggle{ display:block; width:100%; text-align:left; background:none; border:none; font:inherit; font-weight:700; color:var(--navy); cursor:pointer; padding:0 0 4px; }
+  }
+
+  main{ min-width:0; }
+  .updated{ color:var(--ink-soft); font-size:14px; margin:0 0 28px; }
+  .note{ background:var(--mist); border:1px solid var(--line); border-radius:var(--radius-s); padding:16px 20px; font-size:14px; margin-bottom:36px; }
+
+  .card{ background:var(--surface); border:1px solid var(--line); border-radius:var(--radius-m); padding:28px clamp(20px,3vw,32px); margin-bottom:22px; scroll-margin-top:88px; }
+  .card h2{ font-size:1.25rem; margin:0 0 14px; display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+  .card h3{ font-size:1.02rem; margin:22px 0 8px; }
+  .card p, .card li{ font-size:15px; color:var(--ink-soft); }
+  .card ul, .card ol{ padding-left:22px; }
+  .badge{ font-size:11px; font-weight:700; letter-spacing:.03em; padding:3px 10px; border-radius:100px; background:rgba(20,112,184,.12); color:var(--blue-deep); }
+
+  table.data-table{ width:100%; border-collapse:collapse; margin:14px 0; font-size:13.5px; }
+  table.data-table th, table.data-table td{ border:1px solid var(--line); padding:9px 12px; text-align:left; vertical-align:top; }
+  table.data-table th{ background:var(--mist); color:var(--navy); font-weight:700; }
+  .table-wrap{ overflow-x:auto; }
+
+  .rights-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:14px; margin-top:14px; }
+  .right-item{ background:var(--mist); border:1px solid var(--line); border-radius:var(--radius-s); padding:14px 16px; font-size:14px; }
+  .right-item strong{ display:block; color:var(--navy); margin-bottom:4px; font-size:14.5px; }
+
+  .optout-box{ background:rgba(4,191,70,.08); border:1px solid rgba(4,191,70,.3); border-radius:var(--radius-s); padding:16px 20px; margin-top:14px; }
+
+  .contact-card{ background:var(--navy); color:#fff; border-radius:var(--radius-m); padding:26px 28px; margin-top:10px; }
+  .contact-card h3{ color:#fff; margin-top:0; }
+  .contact-card a{ color:#fff; font-weight:700; }
+  .contact-card p{ color:#C9D5E0; }
+
+  footer.site-footer{ border-top:1px solid var(--line); padding:26px 24px; }
+  .footer-inner{ max-width:1180px; margin:0 auto; display:flex; flex-wrap:wrap; gap:12px 24px; align-items:center; justify-content:space-between; font-size:13px; color:var(--ink-soft); }
+  .footer-inner a{ color:var(--ink-soft); text-decoration:none; }
+  .footer-inner a:hover{ color:var(--blue); }
+  .footer-links{ display:flex; gap:20px; flex-wrap:wrap; }
+</style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<header class="site-header" role="banner">
+  <div class="header-inner">
+    <a class="brand" href="/">NextGen Skills Foundation</a>
+    <a class="back" href="/">&larr; Back to the website</a>
+  </div>
+</header>
+
+<section class="legal-hero">
+  <h1>Legal &amp; Privacy</h1>
+  <p>Privacy Policy and Terms of Service for nextgenskillsfoundation.com — written to meet international
+  data-protection standards for visitors in the EU/EEA, the United States, the Caribbean and beyond.</p>
+  <div class="pills">
+    <span class="pill">GDPR (EU/EEA/UK)</span>
+    <span class="pill">CCPA/CPRA (California)</span>
+    <span class="pill">Caribbean Data Protection</span>
+    <span class="pill">WCAG 2.1 AA Accessible</span>
+  </div>
+</section>
+
+<div class="layout">
+  <nav class="toc" aria-label="Table of contents">
+    <button class="toc-toggle" type="button" aria-expanded="true" onclick="var t=this.closest('.toc'); var open=t.hasAttribute('data-collapsed'); if(open){t.removeAttribute('data-collapsed'); this.setAttribute('aria-expanded','true');} else {t.setAttribute('data-collapsed',''); this.setAttribute('aria-expanded','false');}">On this page &darr;</button>
+    <h2>Contents</h2>
+    <ol>
+      <li><a href="#who-we-are">1. Who We Are</a></li>
+      <li><a href="#data-collected">2. What Data We Collect</a></li>
+      <li><a href="#why-we-collect">3. Why We Collect It</a></li>
+      <li><a href="#legal-basis">4. Legal Basis (GDPR)</a></li>
+      <li><a href="#cookies">5. Cookies &amp; Tracking</a></li>
+      <li><a href="#third-parties">6. Third-Party Services</a></li>
+      <li><a href="#international">7. International Data Transfers</a></li>
+      <li><a href="#gdpr-rights">8. GDPR Rights (EU/EEA/UK)</a></li>
+      <li><a href="#ccpa-rights">9. CCPA/CPRA Rights (California)</a></li>
+      <li><a href="#us-state-rights">10. Other US State Rights</a></li>
+      <li><a href="#caribbean-rights">11. Caribbean Residents' Rights</a></li>
+      <li><a href="#children">12. Children's Privacy</a></li>
+      <li><a href="#canspam">13. Commercial Email</a></li>
+      <li><a href="#accessibility">14. Accessibility</a></li>
+      <li><a href="#retention">15. Data Retention</a></li>
+      <li><a href="#security">16. Security</a></li>
+      <li><a href="#terms">17. Terms of Service</a></li>
+      <li><a href="#changes">18. Changes to This Policy</a></li>
+      <li><a href="#contact">19. Contact Us</a></li>
+    </ol>
+  </nav>
+
+  <main id="main" role="main">
+    <p class="updated">Last updated: <strong>September 2026</strong></p>
+    <p class="note">This page explains, in plain terms, how NextGen Skills Foundation collects and uses
+    information through this website, and sets out the terms for using the site. It is written to satisfy
+    GDPR, CCPA/CPRA and Caribbean data-protection expectations for an internationally-facing nonprofit site,
+    but it is a compliance template adapted to this organization's actual practices — not a substitute for
+    advice from a qualified attorney. If NextGen Skills Foundation's data practices change materially (for
+    example, a new third-party tool is added), this page should be reviewed and updated before that change
+    goes live.</p>
+
+    <div class="card" id="who-we-are">
+      <h2>1. Who We Are</h2>
+      <p><strong>NextGen Skills Foundation</strong> is a nonprofit organization based in Saint Lucia,
+      recognized by Saint Lucia's Ministry of Equity, Social Justice, Gender, Older Persons, Labour,
+      Cooperatives and Consumer Affairs as operating in compliance with the Non-Governmental Organizations
+      Act. We design and facilitate vocational skills-development projects for young people, in partnership
+      with accredited training provider Shan-Phill Training. This website is
+      <a href="https://www.nextgenskillsfoundation.com/">nextgenskillsfoundation.com</a>, and we are the
+      "data controller" for the personal data described in this policy. You can reach us at
+      <a href="mailto:nextgenskillsfoundation@gmail.com">nextgenskillsfoundation@gmail.com</a>.</p>
+    </div>
+
+    <div class="card" id="data-collected">
+      <h2>2. What Data We Collect</h2>
+      <p>We collect information in two ways:</p>
+      <h3>Information you give us directly</h3>
+      <p>When you use the "Get Involved" form on our homepage, we ask for: the option that best describes
+      you (prospective participant, parent or guardian, school or facility, partner or sponsor, or
+      volunteer), your full name, your email address, an optional organization name, and any message you
+      choose to write. We do not ask for payment details, government ID numbers, or any information beyond
+      what that form requests.</p>
+      <h3>Information collected automatically</h3>
+      <p>When Google Analytics 4 is active (see Section 5), it collects standard analytics data such as
+      pages viewed, approximate location (city/country level, derived from IP address), device and browser
+      type, and how you arrived at the site. This data is pseudonymous — GA4 is not used to identify you
+      personally — and is only collected after you accept analytics cookies through the consent banner
+      described in Section 5.</p>
+    </div>
+
+    <div class="card" id="why-we-collect">
+      <h2>3. Why We Collect It</h2>
+      <ul>
+        <li>To respond to inquiries, referrals and applications submitted through the Get Involved form.</li>
+        <li>To keep track of programme participants, referring schools, partners and sponsors.</li>
+        <li>To understand, in aggregate, how visitors use this website so we can improve it — for example,
+        which pages are most useful and where visitors are located.</li>
+      </ul>
+      <p>We do not sell personal data, and we do not use the information you submit for advertising or
+      profiling.</p>
+    </div>
+
+    <div class="card" id="legal-basis">
+      <h2>4. Legal Basis for Processing <span class="badge">GDPR — Art. 6</span></h2>
+      <p>For visitors in the EU, EEA or UK, our legal bases for processing personal data under the GDPR are:</p>
+      <ul>
+        <li><strong>Consent</strong> — for analytics cookies (GA4), which only load after you accept them
+        through the CookieYes consent banner.</li>
+        <li><strong>Legitimate interest</strong> — for responding to messages you send us through the Get
+        Involved form, where our interest in running the Foundation's programmes is balanced against your
+        privacy rights.</li>
+        <li><strong>Consent</strong> — where you voluntarily submit a message, application or referral
+        through the form, you are consenting to us using that information to respond.</li>
+      </ul>
+      <p>You may withdraw consent at any time — for cookies, by reopening the consent settings described in
+      Section 5; for form submissions, by emailing us at the address in Section 19.</p>
+    </div>
+
+    <div class="card" id="cookies">
+      <h2>5. Cookies &amp; Tracking Technologies</h2>
+      <p>This site uses <strong>CookieYes</strong> as its consent management platform to gather and record
+      your cookie preferences in a way that satisfies GDPR/ePrivacy and CCPA requirements. On your first
+      visit, a banner lets you accept or decline non-essential cookies; you can change your choice at any
+      time via the "Manage Cookie Preferences" control CookieYes adds to the page.</p>
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead><tr><th>Cookie</th><th>Purpose</th><th>Duration</th><th>Requires consent?</th></tr></thead>
+          <tbody>
+            <tr><td>cookieyes-consent</td><td>Remembers your cookie choice so we don't ask again unnecessarily</td><td>12 months</td><td>No — strictly necessary</td></tr>
+            <tr><td>_ga, _ga_*</td><td>Google Analytics 4 — distinguishes visitors and sessions</td><td>Up to 2 years</td><td>Yes</td></tr>
+            <tr><td>nextgen-theme</td><td>Remembers your light/dark display preference (stored locally, never sent to us)</td><td>Until you clear it</td><td>No — local device storage only</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Google Analytics 4 (<code>_ga</code>/<code>_ga_*</code> cookies) only loads after you accept
+      analytics cookies in the CookieYes banner. If you decline, GA4 does not run and no analytics cookies
+      are set. You can withdraw consent at any time, and your browser's own settings let you block or
+      delete cookies generally.</p>
+    </div>
+
+    <div class="card" id="third-parties">
+      <h2>6. Third-Party Services We Use</h2>
+      <ul>
+        <li><strong>Google Analytics 4</strong> — website analytics. Google's privacy practices are described
+        at <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">policies.google.com/privacy</a>.
+        Only active after you consent (Section 5).</li>
+        <li><strong>CookieYes</strong> — manages and records your cookie consent choice. See
+        <a href="https://www.cookieyes.com/privacy-policy/" target="_blank" rel="noopener noreferrer">CookieYes's privacy policy</a>.</li>
+        <li><strong>Formspree</strong> — processes and delivers Get Involved form submissions to us by
+        email. See <a href="https://formspree.io/legal/privacy-policy/" target="_blank" rel="noopener noreferrer">Formspree's privacy policy</a>.
+        We do not store form submissions in any public repository.</li>
+        <li><strong>Google Fonts</strong> — typefaces are loaded from Google's font CDN.</li>
+      </ul>
+      <p>This site does not use WhatsApp, Facebook Pixel, PayPal or any advertising network. If that
+      changes, this page will be updated first.</p>
+    </div>
+
+    <div class="card" id="international">
+      <h2>7. International Data Transfers <span class="badge">GDPR</span></h2>
+      <p>Because our third-party service providers (Google, CookieYes, Formspree) operate globally, data
+      collected through this site may be transferred to and processed in countries outside your own,
+      including the United States. Where this involves transferring personal data out of the EU/EEA/UK,
+      those providers rely on mechanisms such as the EU-US Data Privacy Framework or Standard Contractual
+      Clauses to provide an adequate level of protection, as required by GDPR Chapter V.</p>
+    </div>
+
+    <div class="card" id="gdpr-rights">
+      <h2>8. Your Rights Under GDPR <span class="badge">EU / EEA / UK</span></h2>
+      <p>If you are located in the EU, EEA or UK, you have the right to:</p>
+      <div class="rights-grid">
+        <div class="right-item"><strong>Access</strong>Request a copy of the personal data we hold about you.</div>
+        <div class="right-item"><strong>Rectification</strong>Ask us to correct inaccurate or incomplete data.</div>
+        <div class="right-item"><strong>Erasure</strong>Ask us to delete your personal data ("right to be forgotten").</div>
+        <div class="right-item"><strong>Restriction</strong>Ask us to limit how we use your data.</div>
+        <div class="right-item"><strong>Portability</strong>Receive your data in a structured, machine-readable format.</div>
+        <div class="right-item"><strong>Object</strong>Object to processing based on legitimate interest.</div>
+        <div class="right-item"><strong>Withdraw consent</strong>Withdraw consent for cookies or form-based processing at any time.</div>
+        <div class="right-item"><strong>Complain</strong>Lodge a complaint with your local data protection supervisory authority.</div>
+      </div>
+      <p>To exercise any of these rights, contact us using the details in Section 19. We will respond within
+      30 days, as required by GDPR.</p>
+    </div>
+
+    <div class="card" id="ccpa-rights">
+      <h2>9. Your Rights Under CCPA/CPRA <span class="badge">California</span></h2>
+      <p>If you are a California resident, the California Consumer Privacy Act (as amended by the CPRA)
+      gives you the right to know what personal information we collect, request deletion of it, correct
+      inaccurate information, and opt out of the "sale" or "sharing" of personal information.</p>
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead><tr><th>Category</th><th>Collected?</th><th>Source</th><th>Purpose</th></tr></thead>
+          <tbody>
+            <tr><td>Identifiers (name, email)</td><td>Yes</td><td>Get Involved form</td><td>Responding to your inquiry</td></tr>
+            <tr><td>Commercial information</td><td>No</td><td>—</td><td>Not applicable — this site does not sell products or services</td></tr>
+            <tr><td>Internet/network activity</td><td>Yes, if you consent</td><td>Google Analytics 4</td><td>Understanding site usage</td></tr>
+            <tr><td>Geolocation (approximate, city/country level)</td><td>Yes, if you consent</td><td>Google Analytics 4</td><td>Understanding visitor location</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="optout-box">
+        <strong>Do Not Sell or Share My Personal Information</strong>
+        <p style="margin:8px 0 0;">NextGen Skills Foundation does not sell or share personal information with
+        third parties for cross-context behavioral advertising, and we do not use any advertising trackers.
+        There is nothing for you to opt out of, but if you have questions about this, contact us using the
+        details in Section 19.</p>
+      </div>
+    </div>
+
+    <div class="card" id="us-state-rights">
+      <h2>10. Other US State Privacy Rights</h2>
+      <p>Residents of Virginia, Colorado, Connecticut, Texas, Oregon, Montana, Indiana, Tennessee and other
+      US states with comprehensive privacy laws have similar rights to access, correct, delete and obtain a
+      copy of their personal data, and to opt out of targeted advertising or profiling — neither of which
+      this site engages in. To exercise these rights, contact us using the details in Section 19.</p>
+    </div>
+
+    <div class="card" id="caribbean-rights">
+      <h2>11. Caribbean Residents' Rights</h2>
+      <p>NextGen Skills Foundation is based in Saint Lucia and most of our participants, partners and
+      visitors are in the Caribbean. Several Caribbean jurisdictions have their own data protection
+      frameworks — for example Jamaica's Data Protection Act, Trinidad and Tobago's Data Protection Act, and
+      Bermuda's Personal Information Protection Act. Where you have rights under the law of your own
+      jurisdiction to access, correct or request deletion of your personal data, we honor those requests on
+      the same terms described for GDPR in Section 8, contacted via the details in Section 19.</p>
+    </div>
+
+    <div class="card" id="children">
+      <h2>12. Children's Privacy</h2>
+      <p>This website is not directed at children under 13, and we do not knowingly collect personal
+      information directly from children under 13 through the Get Involved form. NextGen Skills Foundation's
+      programmes serve young people generally aged 15 and older; where a prospective participant is a minor,
+      we expect a parent, guardian or referring school to be involved in the inquiry, application and
+      enrollment process. If we learn that a child under 13 has submitted personal information directly, we
+      will delete it. Parents or guardians who believe their child has provided us with information can
+      contact us using the details in Section 19 to request its removal.</p>
+    </div>
+
+    <div class="card" id="canspam">
+      <h2>13. Commercial Email</h2>
+      <p>NextGen Skills Foundation does not currently operate an email marketing list or send promotional
+      email campaigns — email is used only to respond to inquiries submitted through the Get Involved form.
+      If that changes in the future, any commercial email we send will comply with the US CAN-SPAM Act:
+      accurate sender information, a clear subject line, our physical location, and a working way to opt
+      out of future messages.</p>
+    </div>
+
+    <div class="card" id="accessibility">
+      <h2>14. Accessibility</h2>
+      <p>NextGen Skills Foundation is committed to making this website usable by everyone, including people
+      using assistive technology. This site is built to conform to the <strong>Web Content Accessibility
+      Guidelines (WCAG) 2.1, Level AA</strong>, including: descriptive alternative text on meaningful images,
+      sufficient color contrast between text and background, full keyboard navigability, semantic landmark
+      structure for screen readers, and visible focus indicators on every interactive element. If you
+      encounter an accessibility barrier anywhere on this site, please tell us using the details in
+      Section 19 so we can fix it.</p>
+    </div>
+
+    <div class="card" id="retention">
+      <h2>15. Data Retention</h2>
+      <p>We keep personal data only as long as necessary for the purposes described in this policy:</p>
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead><tr><th>Data type</th><th>Retention period</th><th>Reason</th></tr></thead>
+          <tbody>
+            <tr><td>Get Involved form submissions</td><td>As long as needed to respond and, where relevant, maintain programme/partner records</td><td>Ongoing programme administration</td></tr>
+            <tr><td>Google Analytics 4 data</td><td>14 months, then automatically deleted by Google</td><td>GA4's own minimum retention setting</td></tr>
+            <tr><td>Cookie consent record (CookieYes)</td><td>12 months</td><td>So we don't ask again unnecessarily</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>You may request earlier deletion of personal data we hold about you, subject to any legal
+      obligation we may have to retain it, by contacting us using the details in Section 19.</p>
+    </div>
+
+    <div class="card" id="security">
+      <h2>16. Security</h2>
+      <p>We take reasonable technical and organizational measures to protect personal data, including:</p>
+      <ul>
+        <li>HTTPS encryption enforced on every page (TLS/SSL).</li>
+        <li>A strict Content Security Policy restricting which scripts and resources this site can load.</li>
+        <li>No storage of payment information — this site does not process payments.</li>
+        <li>No local database of visitor personal information; form submissions are handled by Formspree and delivered to us by email.</li>
+      </ul>
+      <p>No method of transmission over the internet is 100% secure. In the unlikely event of a data breach
+      likely to result in a risk to your rights, we will notify affected individuals and, where required,
+      relevant supervisory authorities without undue delay (within 72 hours under GDPR where feasible).</p>
+    </div>
+
+    <div class="card" id="terms">
+      <h2>17. Terms of Service</h2>
+      <h3>Acceptance of Terms</h3>
+      <p>By using this website, you agree to these Terms of Service. If you do not agree, please do not use
+      this website.</p>
+      <h3>Acceptable Use</h3>
+      <p>You agree to use this website only for lawful purposes, and not in any way that is unlawful,
+      harmful, fraudulent, misleading, or that infringes the rights of others. You must not attempt to gain
+      unauthorized access to this website or its underlying infrastructure.</p>
+      <h3>Intellectual Property</h3>
+      <p>All content on this website — text, images, logos and design — is the property of NextGen Skills
+      Foundation unless otherwise credited. You may not reproduce, distribute or create derivative works from
+      this content without prior written permission.</p>
+      <h3>Accuracy of Information</h3>
+      <p>We make reasonable efforts to keep information on this site accurate and current, but we make no
+      warranty regarding its completeness or fitness for any particular purpose. Programme details, partner
+      information and contact details are subject to change without notice.</p>
+      <h3>External Links</h3>
+      <p>This website links to external platforms including Instagram. We are not responsible for the
+      content or privacy practices of external sites, and accessing them is at your own risk.</p>
+      <h3>Limitation of Liability</h3>
+      <p>To the fullest extent permitted by law, NextGen Skills Foundation is not liable for any indirect,
+      incidental or consequential damages arising from your use of, or inability to use, this website.</p>
+      <h3>Disclaimer of Warranties</h3>
+      <p>This website is provided "as is" and "as available," without warranty of any kind, express or
+      implied, including warranties of merchantability, fitness for a particular purpose, and
+      non-infringement.</p>
+      <h3>Governing Law</h3>
+      <p>These Terms are governed by the laws of Saint Lucia, without regard to conflict-of-law principles,
+      except where mandatory consumer-protection law in your own jurisdiction requires otherwise. Nothing in
+      these Terms limits any statutory rights you have under EU consumer-protection law or US federal or
+      state consumer-protection law.</p>
+      <h3>Severability</h3>
+      <p>If any provision of these Terms is found unenforceable, that provision will be modified to the
+      minimum extent necessary or severed, and the remaining provisions will continue in effect.</p>
+    </div>
+
+    <div class="card" id="changes">
+      <h2>18. Changes to This Policy</h2>
+      <p>We may update this Legal &amp; Privacy page from time to time. When we do, we will update the "Last
+      updated" date at the top of this page. For material changes — particularly any that affect how we
+      process personal data or limit your rights — we will make reasonable efforts to give notice on the
+      website homepage. Your continued use of this website after changes are posted constitutes acceptance
+      of the revised terms. The most current version is always available at
+      <strong>nextgenskillsfoundation.com/legal.html</strong>.</p>
+    </div>
+
+    <div class="card" id="contact">
+      <h2>19. Contact Us &amp; Rights Requests</h2>
+      <p>To exercise any privacy right described above, ask a question about this policy, or report an
+      accessibility issue — contact us directly. We will respond within the timeframe required for your
+      jurisdiction (30 days under GDPR; 45 days under CCPA; without undue delay elsewhere). Please state
+      clearly which right you wish to exercise and which jurisdiction's law you're relying on.</p>
+      <div class="contact-card">
+        <h3>NextGen Skills Foundation</h3>
+        <p>Based in Saint Lucia</p>
+        <p><a href="mailto:nextgenskillsfoundation@gmail.com">nextgenskillsfoundation@gmail.com</a><br>
+        <a href="tel:+17587127876">1-758-7127876</a></p>
+        <p style="margin-top:14px;">You can also reach us through the
+        <a href="/#get-involved" style="color:#fff; text-decoration:underline;">Get Involved form</a> on our homepage.</p>
+      </div>
+      <p style="text-align:center; font-size:12.5px; opacity:.6; margin-top:22px;">
+        This Legal &amp; Privacy page was last reviewed: <strong>September 2026</strong>.<br>
+        Website built by <a href="https://jamalinks758.github.io/jamalinks/" target="_blank" rel="noopener noreferrer">JAMALINKS</a> &middot; Saint Lucia, Caribbean.
+      </p>
+    </div>
+  </main>
+</div>
+
+<footer class="site-footer" role="contentinfo">
+  <div class="footer-inner">
+    <span>&copy; <span id="year"></span> NextGen Skills Foundation. All rights reserved.</span>
+    <div class="footer-links">
+      <a href="#ccpa-rights">Do Not Sell or Share My Personal Information</a>
+      <a href="/">Back to Website</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
