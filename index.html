@@ -35,21 +35,22 @@
      COOKIE CONSENT (CookieYes) — must load before Google Analytics 4
      below so it can auto-block GA4 until a visitor gives consent. See
      /legal.html Section 5 for the disclosure this pairs with.
-     TODO: replace YOUR_COOKIEYES_ID with the real script ID once the
-     CookieYes account for nextgenskillsfoundation.com is created.
      ══════════════════════════════════════════════════════════════════ -->
-<script id="cookieyes" type="text/javascript" src="https://cdn-cookieyes.com/client_data/YOUR_COOKIEYES_ID/script.js"></script>
+<script id="cookieyes" type="text/javascript" src="https://cdn-cookieyes.com/client_data/673bb7370f4e8580c3bac36fbdfe6b97/script.js"></script>
 
 <!-- ══════════════════════════════════════════════════════════════════
-     GOOGLE ANALYTICS 4 — CookieYes auto-blocks this until consent.
-     TODO: replace G-XXXXXXXXXX with the real GA4 Measurement ID.
+     GOOGLE ANALYTICS 4 — the gtag.js request itself is gated behind
+     data-cookieyes="cookieyes-analytics" (CookieYes's documented manual
+     script-blocking attribute), so it does not fire until the visitor
+     accepts the Analytics category. The inline stub below only queues
+     events into dataLayer and is safe to run unconditionally.
      ══════════════════════════════════════════════════════════════════ -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script async data-cookieyes="cookieyes-analytics" src="https://www.googletagmanager.com/gtag/js?id=G-ZE3Y5PNF5D"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){ dataLayer.push(arguments); }
   gtag('js', new Date());
-  gtag('config', 'G-XXXXXXXXXX');
+  gtag('config', 'G-ZE3Y5PNF5D');
 </script>
 
 <title>NextGen Skills Foundation | CVQ Training, Saint Lucia</title>
