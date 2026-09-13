@@ -507,6 +507,25 @@
   .why-item p{ font-size:15.5px; }
   @media (max-width:860px){ .why-layout{ grid-template-columns:1fr; gap:36px; } }
 
+  /* ---------- Accreditation ---------- */
+  .accred-grid{
+    display:grid; grid-template-columns:repeat(2,1fr); gap:28px;
+  }
+  .accred-card{
+    background:var(--surface); border:1px solid var(--line); border-radius:var(--radius-m);
+    overflow:hidden; display:flex; flex-direction:column;
+    box-shadow:var(--shadow);
+  }
+  .accred-card a{ display:block; line-height:0; background:var(--mist); }
+  .accred-card img{
+    width:100%; height:auto; max-height:420px; object-fit:contain;
+    display:block; margin:0 auto; padding:18px;
+  }
+  .accred-body{ padding:22px 26px 28px; border-top:1px solid var(--line); }
+  .accred-body h3{ font-size:18.5px; margin-bottom:8px; }
+  .accred-body p{ font-size:14.5px; color:var(--ink-soft); }
+  @media (max-width:760px){ .accred-grid{ grid-template-columns:1fr; } }
+
   /* ---------- Featured ---------- */
   .featured-card{
     background:linear-gradient(135deg, var(--navy) 0%, #123B6E 100%);
@@ -817,7 +836,7 @@
       <div class="cat-tabs" role="tablist" aria-label="Course categories">
         <button id="tab-cvq" class="cat-tab active" data-target="panel-cvq" role="tab" aria-selected="true" aria-controls="panel-cvq">CVQ &amp; Vocational Training</button>
         <button id="tab-cert" class="cat-tab" data-target="panel-cert" role="tab" aria-selected="false" aria-controls="panel-cert">Certificate Courses</button>
-        <button id="tab-pro" class="cat-tab" data-target="panel-pro" role="tab" aria-selected="false" aria-controls="panel-pro">Professional &amp; Business Training</button>
+        <button id="tab-pro" class="cat-tab" data-target="panel-pro" role="tab" aria-selected="false" aria-controls="panel-pro">Corporate &amp; Customer Service Training</button>
       </div>
 
       <div class="course-panel active" id="panel-cvq" role="tabpanel" aria-labelledby="tab-cvq" tabindex="0">
@@ -929,6 +948,38 @@
             <p>We train people building a career on their own, and organizations building capacity in their workforce.</p>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ACCREDITATION ============ -->
+  <section class="section section-alt" id="accreditation">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="eyebrow">Accreditation</div>
+        <h2>Licensed and government-approved.</h2>
+        <p>SHAN-PHILL Training operates under an official Private Educational Institution Permit from Saint Lucia&rsquo;s Ministry of Education, and is an approved centre of the Saint Lucia Council for Technical and Vocational Education and Training (SLCTVET).</p>
+      </div>
+
+      <div class="accred-grid reveal">
+        <article class="accred-card">
+          <a href="assets/shanphill-permit-2025.jpg" target="_blank" rel="noopener noreferrer" aria-label="View the Ministry of Education Private Educational Institution Permit at full size (opens in a new tab)">
+            <img src="assets/shanphill-permit-2025.jpg" alt="Private Educational Institution Permit issued to SHAN-PHILL Training by the Saint Lucia Ministry of Education" width="850" height="1100" loading="lazy" decoding="async" onerror="this.style.display='none'">
+          </a>
+          <div class="accred-body">
+            <h3>Ministry of Education Permit</h3>
+            <p>Private Educational Institution Permit granted May 10, 2025, valid through May 9, 2028. Licensed course areas: Electrical Installation, Community Tourism, Customer Services, and Supervisory Management.</p>
+          </div>
+        </article>
+        <article class="accred-card">
+          <a href="assets/shanphill-slctvet-certificate.jpg" target="_blank" rel="noopener noreferrer" aria-label="View the SLCTVET Approved Centre certificate at full size (opens in a new tab)">
+            <img src="assets/shanphill-slctvet-certificate.jpg" alt="SLCTVET Approved Centre certificate issued to SHAN-PHILL Training" width="736" height="1100" loading="lazy" decoding="async" onerror="this.style.display='none'">
+          </a>
+          <div class="accred-body">
+            <h3>SLCTVET Approved Centre</h3>
+            <p>Centre Number SPHT23-04/25. Approval period May 2025 &ndash; April 2028, issued by the Saint Lucia Council for Technical and Vocational Education and Training.</p>
+          </div>
+        </article>
       </div>
     </div>
   </section>
