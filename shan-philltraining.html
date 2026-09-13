@@ -7,11 +7,11 @@
 <!-- Security headers (meta-tag equivalents; see also Cloudflare header setup for HSTS/X-Frame-Options at the HTTP layer) -->
 <meta http-equiv="Content-Security-Policy"
       content="default-src 'self';
-               script-src 'self' 'unsafe-inline';
-               style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+               script-src 'self' 'unsafe-inline' https://cdn-cookieyes.com https://www.googletagmanager.com;
+               style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn-cookieyes.com;
                font-src https://fonts.gstatic.com;
                img-src 'self' data: https:;
-               connect-src 'self';
+               connect-src 'self' https://cdn-cookieyes.com https://log.cookieyes.com https://www.google-analytics.com https://analytics.google.com https://region1.google-analytics.com;
                object-src 'none';
                base-uri 'self';
                form-action 'self';">
@@ -30,6 +30,28 @@
       if (theme === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
     } catch (e) {}
   })();
+</script>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     COOKIE CONSENT (CookieYes) — must load before Google Analytics 4
+     below so it can auto-block GA4 until a visitor gives consent. See
+     /legal.html Section 5 for the disclosure this pairs with.
+     ══════════════════════════════════════════════════════════════════ -->
+<script id="cookieyes" type="text/javascript" src="https://cdn-cookieyes.com/client_data/673bb7370f4e8580c3bac36fbdfe6b97/script.js"></script>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     GOOGLE ANALYTICS 4 — the gtag.js request itself is gated behind
+     data-cookieyes="cookieyes-analytics" (CookieYes's documented manual
+     script-blocking attribute), so it does not fire until the visitor
+     accepts the Analytics category. The inline stub below only queues
+     events into dataLayer and is safe to run unconditionally.
+     ══════════════════════════════════════════════════════════════════ -->
+<script async data-cookieyes="cookieyes-analytics" src="https://www.googletagmanager.com/gtag/js?id=G-ZE3Y5PNF5D"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-ZE3Y5PNF5D');
 </script>
 
 <title>Shan-Phill Training | Skills Training in Saint Lucia</title>
