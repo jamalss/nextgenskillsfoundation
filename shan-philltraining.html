@@ -21,18 +21,12 @@
       content="camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()">
 
 <!-- Theme detection — must run before first paint to avoid a light/dark flash.
-     Auto rule: 6am-6pm = light, 6pm-6am = dark, unless the visitor already chose a mode manually. -->
+     Matches the visitor's OS/browser light-dark setting, unless they've already chosen a mode manually here. -->
 <script>
   (function(){
     try {
       var saved = localStorage.getItem('shanphill-theme');
-      var theme;
-      if (saved) {
-        theme = saved;
-      } else {
-        var hr = new Date().getHours();
-        theme = (hr < 6 || hr >= 18) ? 'dark' : 'light';
-      }
+      var theme = saved || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
       if (theme === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
     } catch (e) {}
   })();
@@ -169,7 +163,7 @@
     color-scheme: light;
   }
 
-  /* ---------- Dark theme (time-of-day auto + manual toggle; see script at end of body) ---------- */
+  /* ---------- Dark theme (auto by OS/browser preference + manual toggle; see script at end of body) ---------- */
   html[data-theme="dark"]{
     --ink:#E7EDF5;
     --ink-soft:#A9B9CC;
