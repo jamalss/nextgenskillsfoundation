@@ -129,6 +129,12 @@
       "description": "Practical training in customer service standards and communication.",
       "provider": { "@type": "EducationalOrganization", "name": "Shan-Phill Training" },
       "timeRequired": "P6W"
+    },
+    {
+      "@type": "Course",
+      "name": "Business & Workplace Training",
+      "description": "Workshop topics delivered to organizations, covering customer service, communication, conflict resolution and workplace wellbeing, with customized topics available on request.",
+      "provider": { "@type": "EducationalOrganization", "name": "Shan-Phill Training" }
     }
   ]
 }
@@ -472,6 +478,14 @@
   }
   .course-card a.card-link .arrow{ transition:transform .2s var(--ease); }
   .course-card a.card-link:hover .arrow{ transform:translateX(4px); }
+  .course-card.wide{ grid-column:1 / -1; }
+  .topic-list{
+    list-style:none; margin:2px 0 0; padding:0;
+    display:grid; grid-template-columns:repeat(2,1fr); gap:11px 28px;
+  }
+  .topic-list li{ display:flex; gap:10px; align-items:flex-start; font-size:14.5px; color:var(--ink-soft); }
+  .topic-list li svg{ flex-shrink:0; margin-top:2px; }
+  @media (max-width:620px){ .topic-list{ grid-template-columns:1fr; } }
 
   @media (max-width:940px){
     .course-grid, .course-panel.active{ grid-template-columns:repeat(2,1fr); }
@@ -855,11 +869,24 @@
       </div>
 
       <div class="course-panel" id="panel-pro" role="tabpanel" aria-labelledby="tab-pro" tabindex="0">
-        <article class="course-card" style="border-style:dashed; color:var(--ink-soft);">
-          <span class="course-type" style="background:var(--mist); color:var(--ink-soft);">Coming soon</span>
-          <h3 style="color:var(--ink-soft);">More business courses</h3>
-          <p>Additional professional and business programmes will be listed here as they are confirmed.</p>
-          <a class="card-link" href="#contact">Register interest <span class="arrow">&rarr;</span></a>
+        <article class="course-card wide">
+          <span class="course-type">For Business Places</span>
+          <h3>Business &amp; Workplace Training</h3>
+          <p>Workshop topics delivered to organizations and teams &mdash; built around real workplace situations,
+          not just theory.</p>
+          <ul class="topic-list">
+            <li><svg width="18" height="18" viewBox="0 0 18 18" fill="none" style="flex-shrink:0;"><circle cx="9" cy="9" r="9" fill="#0078FF"/><path d="M5 9.3L7.6 12L13 6" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Motivation in Customer Service</li>
+            <li><svg width="18" height="18" viewBox="0 0 18 18" fill="none" style="flex-shrink:0;"><circle cx="9" cy="9" r="9" fill="#0078FF"/><path d="M5 9.3L7.6 12L13 6" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> The Fundamentals of Customer Service</li>
+            <li><svg width="18" height="18" viewBox="0 0 18 18" fill="none" style="flex-shrink:0;"><circle cx="9" cy="9" r="9" fill="#0078FF"/><path d="M5 9.3L7.6 12L13 6" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Dealing with Challenging Customers</li>
+            <li><svg width="18" height="18" viewBox="0 0 18 18" fill="none" style="flex-shrink:0;"><circle cx="9" cy="9" r="9" fill="#0078FF"/><path d="M5 9.3L7.6 12L13 6" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Effective Communication</li>
+            <li><svg width="18" height="18" viewBox="0 0 18 18" fill="none" style="flex-shrink:0;"><circle cx="9" cy="9" r="9" fill="#0078FF"/><path d="M5 9.3L7.6 12L13 6" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Problem Solving in Customer Service</li>
+            <li><svg width="18" height="18" viewBox="0 0 18 18" fill="none" style="flex-shrink:0;"><circle cx="9" cy="9" r="9" fill="#0078FF"/><path d="M5 9.3L7.6 12L13 6" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Conflict Resolution</li>
+            <li><svg width="18" height="18" viewBox="0 0 18 18" fill="none" style="flex-shrink:0;"><circle cx="9" cy="9" r="9" fill="#0078FF"/><path d="M5 9.3L7.6 12L13 6" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Emotional Intelligence</li>
+            <li><svg width="18" height="18" viewBox="0 0 18 18" fill="none" style="flex-shrink:0;"><circle cx="9" cy="9" r="9" fill="#0078FF"/><path d="M5 9.3L7.6 12L13 6" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> The Importance of Work-Life Balance</li>
+          </ul>
+          <p style="margin-top:4px;">We also deliver customized topics to meet your organization&rsquo;s needs.</p>
+          <div class="meta"><span>Format: Delivered on-site or by arrangement, for organizations and teams</span></div>
+          <a class="card-link" href="#organizations">Discuss training for your team <span class="arrow">&rarr;</span></a>
         </article>
       </div>
     </div>
