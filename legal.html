@@ -68,26 +68,22 @@
 <!-- ══════════════════════════════════════════════════════════════════
      COOKIE CONSENT (CookieYes) — must load before Google Analytics 4
      below so it can auto-block GA4 until a visitor gives consent.
-     TODO: replace YOUR_COOKIEYES_ID with the real script ID once the
-     CookieYes account for nextgenskillsfoundation.com is created and
-     the ~$10/mo plan is active. Get it from the CookieYes dashboard
-     under Websites → Install Code.
      ══════════════════════════════════════════════════════════════════ -->
-<script id="cookieyes" type="text/javascript" src="https://cdn-cookieyes.com/client_data/YOUR_COOKIEYES_ID/script.js"></script>
+<script id="cookieyes" type="text/javascript" src="https://cdn-cookieyes.com/client_data/673bb7370f4e8580c3bac36fbdfe6b97/script.js"></script>
 
 <!-- ══════════════════════════════════════════════════════════════════
-     GOOGLE ANALYTICS 4 — CookieYes auto-blocks this script until the
-     visitor consents, so it is safe to include normally (no need to
-     mark it type="text/plain"). TODO: replace G-XXXXXXXXXX with the
-     real GA4 Measurement ID from analytics.google.com once the
-     property is created.
+     GOOGLE ANALYTICS 4 — the gtag.js request itself is gated behind
+     data-cookieyes="cookieyes-analytics" (CookieYes's documented manual
+     script-blocking attribute), so it does not fire until the visitor
+     accepts the Analytics category. The inline stub below only queues
+     events into dataLayer and is safe to run unconditionally.
      ══════════════════════════════════════════════════════════════════ -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script async data-cookieyes="cookieyes-analytics" src="https://www.googletagmanager.com/gtag/js?id=G-ZE3Y5PNF5D"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){ dataLayer.push(arguments); }
   gtag('js', new Date());
-  gtag('config', 'G-XXXXXXXXXX');
+  gtag('config', 'G-ZE3Y5PNF5D');
 </script>
 
 <style>
@@ -274,6 +270,13 @@
 
     <div class="card" id="data-collected">
       <h2>2. What Data We Collect</h2>
+      <p>Google Analytics 4 and the CookieYes consent banner run identically across every page on this
+      domain — the NextGen Skills Foundation homepage, the Recognition &amp; Endorsements page, and the
+      Shan-Phill Training page. When active, GA4 collects standard analytics data such as pages viewed,
+      approximate location (city/country level, derived from IP address), device and browser type, and how
+      you arrived at the site. This data is pseudonymous — GA4 is not used to identify you personally — and
+      is only collected after you accept analytics cookies through the CookieYes banner described in
+      Section 5. If you decline, none of it is collected on any page.</p>
       <h3>NextGen Skills Foundation</h3>
       <p>When you use the "Get Involved" form on the NextGen Skills Foundation homepage, it asks for: the
       option that best describes you (prospective participant, parent or guardian, school or facility,
@@ -281,11 +284,6 @@
       and any message you choose to write. That form submission is sent to NextGen Skills Foundation via
       Formspree (Section 6) and is not visible to Shan-Phill Training. It does not ask for payment details,
       government ID numbers, or any information beyond what that form requests.</p>
-      <p>When Google Analytics 4 is active on the NextGen Skills Foundation page (see Section 5), it collects
-      standard analytics data such as pages viewed, approximate location (city/country level, derived from IP
-      address), device and browser type, and how you arrived at the site. This data is pseudonymous — GA4 is
-      not used to identify you personally — and is only collected after you accept analytics cookies through
-      the consent banner described in Section 5.</p>
       <h3>Shan-Phill Training</h3>
       <p>The Shan-Phill Training page does not use a server-side form. Its "Apply / Register" tool is a
       client-side wizard: it asks which programme you're interested in and your name and contact details, and
@@ -293,19 +291,19 @@
       NextGen Skills Foundation, or any server when you fill in the wizard — the information stays in your own
       browser until you press "Send" and are handed off to WhatsApp, at which point WhatsApp (Meta) receives
       and delivers the message under its own privacy policy, linked in Section 6. If you close the page or
-      never press "Send," nothing is collected by anyone.</p>
-      <p>The Shan-Phill Training page does not run Google Analytics, CookieYes, or any other analytics or
-      advertising script — see Section 6.</p>
+      never press "Send," nothing is collected by anyone. This is unaffected by the site-wide GA4/CookieYes
+      setup described above, which governs analytics only, not this wizard.</p>
     </div>
 
     <div class="card" id="why-we-collect">
       <h2>3. Why We Collect It</h2>
+      <p>Where you consent to analytics cookies, GA4 data collected across every page on this domain is used
+      to understand, in aggregate, how visitors use the site so it can be improved — for example, which
+      sections are most useful and where visitors are located.</p>
       <p><strong>NextGen Skills Foundation</strong> collects information to:</p>
       <ul>
         <li>Respond to inquiries, referrals and applications submitted through the Get Involved form.</li>
         <li>Keep track of programme participants, referring schools, partners and sponsors.</li>
-        <li>Understand, in aggregate, how visitors use its page so it can improve it — for example, which
-        sections are most useful and where visitors are located.</li>
       </ul>
       <p><strong>Shan-Phill Training</strong> uses the information entered into its Apply/Register wizard
       only to build the WhatsApp message you choose to send — to identify which programme you're asking
@@ -336,54 +334,61 @@
 
     <div class="card" id="cookies">
       <h2>5. Cookies &amp; Tracking Technologies</h2>
-      <p>The <strong>NextGen Skills Foundation</strong> page uses <strong>CookieYes</strong> as its consent
+      <p>Every page on this domain — the NextGen Skills Foundation homepage, the Recognition &amp;
+      Endorsements page, and the Shan-Phill Training page — uses <strong>CookieYes</strong> as its consent
       management platform to gather and record your cookie preferences in a way that satisfies GDPR/ePrivacy
-      and CCPA requirements. On your first visit, a banner lets you accept or decline non-essential cookies;
-      you can change your choice at any time via the "Manage Cookie Preferences" control CookieYes adds to
-      the page. The <strong>Shan-Phill Training</strong> page runs no cookie-consent tooling because it sets
-      no cookies and runs no analytics — it only stores a display preference locally, as shown below.</p>
+      and CCPA requirements. On your first visit to any of these pages, a banner lets you accept or decline
+      non-essential cookies; you can change your choice at any time via the "Manage Cookie Preferences"
+      control CookieYes adds to the page. Each page separately stores its own light/dark display
+      preference locally, as shown below.</p>
       <div class="table-wrap">
         <table class="data-table">
           <thead><tr><th>Site</th><th>Cookie / storage key</th><th>Purpose</th><th>Duration</th><th>Requires consent?</th></tr></thead>
           <tbody>
-            <tr><td>NextGen</td><td>cookieyes-consent</td><td>Remembers your cookie choice so it doesn't ask again unnecessarily</td><td>12 months</td><td>No — strictly necessary</td></tr>
-            <tr><td>NextGen</td><td>_ga, _ga_*</td><td>Google Analytics 4 — distinguishes visitors and sessions</td><td>Up to 2 years</td><td>Yes</td></tr>
-            <tr><td>NextGen</td><td>nextgen-theme</td><td>Remembers your light/dark display preference (stored locally, never sent to anyone)</td><td>Until you clear it</td><td>No — local device storage only</td></tr>
+            <tr><td>All pages (site-wide)</td><td>cookieyes-consent</td><td>Remembers your cookie choice so it doesn't ask again unnecessarily</td><td>12 months</td><td>No — strictly necessary</td></tr>
+            <tr><td>All pages (site-wide)</td><td>_ga, _ga_*</td><td>Google Analytics 4 — distinguishes visitors and sessions</td><td>Up to 2 years</td><td>Yes</td></tr>
+            <tr><td>NextGen &amp; Recognition/Endorsements</td><td>nextgen-theme</td><td>Remembers your light/dark display preference (stored locally, never sent to anyone)</td><td>Until you clear it</td><td>No — local device storage only</td></tr>
             <tr><td>Shan-Phill Training</td><td>shanphill-theme</td><td>Remembers your light/dark display preference (stored locally, never sent to anyone)</td><td>Until you clear it</td><td>No — local device storage only</td></tr>
           </tbody>
         </table>
       </div>
-      <p>Google Analytics 4 (<code>_ga</code>/<code>_ga_*</code> cookies) only loads on the NextGen Skills
-      Foundation page after you accept analytics cookies in the CookieYes banner. If you decline, GA4 does
-      not run and no analytics cookies are set. You can withdraw consent at any time, and your browser's own
-      settings let you block or delete cookies and local storage generally.</p>
+      <p>Google Analytics 4 (<code>_ga</code>/<code>_ga_*</code> cookies) loads across every page on this
+      domain, but only after you accept analytics cookies in the CookieYes banner. Because the consent
+      cookie is set at the domain level, your choice carries across all pages here — accepting or declining
+      once on any page (NextGen, Recognition &amp; Endorsements, or Shan-Phill Training) applies to the
+      others too, without asking again. If you decline, GA4 does not run anywhere on the domain and no
+      analytics cookies are set. You can withdraw consent at any time, and your browser's own settings let
+      you block or delete cookies and local storage generally.</p>
     </div>
 
     <div class="card" id="third-parties">
       <h2>6. Third-Party Services We Use</h2>
-      <h3>NextGen Skills Foundation</h3>
+      <h3>Used site-wide (NextGen, Recognition &amp; Endorsements, and Shan-Phill Training)</h3>
       <ul>
         <li><strong>Google Analytics 4</strong> — website analytics. Google's privacy practices are described
         at <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">policies.google.com/privacy</a>.
         Only active after you consent (Section 5).</li>
         <li><strong>CookieYes</strong> — manages and records your cookie consent choice. See
         <a href="https://www.cookieyes.com/privacy-policy/" target="_blank" rel="noopener noreferrer">CookieYes's privacy policy</a>.</li>
+        <li><strong>Google Fonts</strong> — typefaces are loaded from Google's font CDN.</li>
+      </ul>
+      <h3>NextGen Skills Foundation only</h3>
+      <ul>
         <li><strong>Formspree</strong> — processes and delivers Get Involved form submissions by email. See
         <a href="https://formspree.io/legal/privacy-policy/" target="_blank" rel="noopener noreferrer">Formspree's privacy policy</a>.
         Form submissions are not stored in any public repository.</li>
-        <li><strong>Google Fonts</strong> — typefaces are loaded from Google's font CDN.</li>
       </ul>
-      <h3>Shan-Phill Training</h3>
+      <h3>Shan-Phill Training only</h3>
       <ul>
         <li><strong>WhatsApp (Meta)</strong> — the Apply/Register wizard hands your message to WhatsApp only
         when you press "Send." WhatsApp's own privacy policy, at
         <a href="https://www.whatsapp.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer">whatsapp.com/legal/privacy-policy</a>,
         governs what happens to that message from that point on.</li>
-        <li><strong>Google Fonts</strong> — typefaces are loaded from Google's font CDN.</li>
       </ul>
-      <p>The Shan-Phill Training page does not use Google Analytics, CookieYes, Formspree, Facebook Pixel,
-      PayPal, or any advertising network. Neither page uses any third-party service beyond what is listed
-      above. If that changes for either page, this page will be updated first.</p>
+      <p>Shan-Phill Training does not use Formspree. NextGen Skills Foundation's form does not hand data to
+      Shan-Phill Training or WhatsApp. Nothing on this domain uses Facebook Pixel, PayPal, or any advertising
+      network. No page uses any third-party service beyond what is listed above. If that changes for any
+      page, this page will be updated first.</p>
     </div>
 
     <div class="card" id="international">
