@@ -20,12 +20,31 @@
 <meta http-equiv="Permissions-Policy"
       content="camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()">
 
+<!-- Theme detection — must run before first paint to avoid a light/dark flash.
+     Auto rule: 6am-6pm = light, 6pm-6am = dark, unless the visitor already chose a mode manually. -->
+<script>
+  (function(){
+    try {
+      var saved = localStorage.getItem('shanphill-theme');
+      var theme;
+      if (saved) {
+        theme = saved;
+      } else {
+        var hr = new Date().getHours();
+        theme = (hr < 6 || hr >= 18) ? 'dark' : 'light';
+      }
+      if (theme === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+    } catch (e) {}
+  })();
+</script>
+
 <title>Shan-Phill Training | Skills Training in Saint Lucia</title>
 <meta name="description" content="Practical, hands-on CVQ and certificate training in Saint Lucia — electrical installation, restaurant service, customer service and more.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://www.nextgenskillsfoundation.com/shan-philltraining.html">
 
-<meta name="theme-color" content="#0B2545">
+<meta name="theme-color" content="#0B2545" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0B121C" media="(prefers-color-scheme: dark)">
 
 <link rel="icon" type="image/x-icon" href="/shanphill-favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="/shanphill-favicon-16x16.png">
@@ -133,15 +152,47 @@
     --ink-soft:#4B5866;
     --paper:#FBFCFD;
     --mist:#EFF3F8;
+    --mist-2:#E4EAF1;
     --line:#E1E7EE;
     --white:#FFFFFF;
+    --heading:#0B2545;
+    --surface:#FFFFFF;
+    --header-bg: rgba(251,252,253,0.88);
+    --accent-blue:var(--blue-deep);
+    --accent-green:var(--green-deep);
     --radius-s:10px;
     --radius-m:16px;
     --radius-l:28px;
     --max:1180px;
     --shadow: 0 20px 50px -25px rgba(11,37,69,0.35);
     --ease: cubic-bezier(.22,.61,.36,1);
+    color-scheme: light;
   }
+
+  /* ---------- Dark theme (time-of-day auto + manual toggle; see script at end of body) ---------- */
+  html[data-theme="dark"]{
+    --ink:#E7EDF5;
+    --ink-soft:#A9B9CC;
+    --paper:#0B121C;
+    --mist:#101A29;
+    --mist-2:#1C2B3F;
+    --line:#24344A;
+    --heading:#EAF2FF;
+    --surface:#14202F;
+    --header-bg: rgba(11,18,28,0.86);
+    --shadow: 0 20px 50px -25px rgba(0,0,0,0.55);
+    --accent-blue:#6BB2FF;
+    --accent-green:#4FD98A;
+    color-scheme: dark;
+  }
+  html[data-theme="dark"] body{ background:var(--paper); }
+  html[data-theme="dark"] .logo-link img,
+  html[data-theme="dark"] .nextgen-card img{ filter:brightness(0) invert(1); }
+  html[data-theme="dark"] .field select{
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9'%3E%3Cpath d='M1 1L7 7L13 1' stroke='%23A9B9CC' stroke-width='1.6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  }
+  html[data-theme="dark"] .im-blue{ fill:#16273F; }
+  html[data-theme="dark"] .im-green{ fill:#12301F; }
 
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
@@ -164,7 +215,7 @@
     font-weight:600;
     line-height:1.08;
     margin:0;
-    color:var(--navy);
+    color:var(--heading);
     letter-spacing:-0.01em;
   }
   p{margin:0; line-height:1.65; color:var(--ink-soft);}
@@ -203,7 +254,7 @@
   .btn-primary:hover{ background:var(--blue-deep); transform:translateY(-2px); box-shadow:0 18px 34px -12px rgba(0,86,199,.6);}
   .btn-ghost-light{ border-color:rgba(255,255,255,.55); color:#fff; }
   .btn-ghost-light:hover{ border-color:#fff; background:rgba(255,255,255,.1); transform:translateY(-2px);}
-  .btn-outline-navy{ border-color:var(--navy); color:var(--navy); }
+  .btn-outline-navy{ border-color:var(--heading); color:var(--heading); }
   .btn-outline-navy:hover{ background:var(--navy); color:#fff; transform:translateY(-2px);}
   .btn-green{ background:var(--green); color:#fff; box-shadow:0 14px 30px -12px rgba(0,147,58,.5);}
   .btn-green:hover{ background:var(--green-deep); transform:translateY(-2px);}
@@ -216,7 +267,7 @@
     gap:9px;
     font-size:13.5px;
     font-weight:600;
-    color:var(--blue-deep);
+    color:var(--accent-blue);
     margin-bottom:14px;
     letter-spacing:0.01em;
   }
@@ -230,7 +281,7 @@
   /* ---------- Header ---------- */
   header{
     position:sticky; top:0; z-index:100;
-    background:rgba(251,252,253,0.88);
+    background:var(--header-bg);
     backdrop-filter:saturate(180%) blur(14px);
     border-bottom:1px solid var(--line);
   }
@@ -252,10 +303,19 @@
   }
   nav.main-nav a:hover::after{ width:100%; }
   .nav-actions{ display:flex; align-items:center; gap:14px; }
+  .theme-toggle{
+    display:inline-flex; align-items:center; justify-content:center; width:38px; height:38px;
+    border-radius:50%; border:1px solid var(--line); background:var(--surface); color:var(--heading);
+    cursor:pointer; transition:background .2s var(--ease), border-color .2s var(--ease), transform .2s var(--ease);
+  }
+  .theme-toggle:hover{ transform:translateY(-1px); border-color:var(--blue); }
+  .theme-toggle .icon-moon{ display:none; }
+  html[data-theme="dark"] .theme-toggle .icon-sun{ display:none; }
+  html[data-theme="dark"] .theme-toggle .icon-moon{ display:block; }
   .menu-toggle{
     display:none; background:none; border:none; cursor:pointer; padding:8px;
   }
-  .menu-toggle span{ display:block; width:24px; height:2px; background:var(--navy); margin:5px 0; border-radius:2px; transition:transform .25s var(--ease), opacity .25s var(--ease);}
+  .menu-toggle span{ display:block; width:24px; height:2px; background:var(--heading); margin:5px 0; border-radius:2px; transition:transform .25s var(--ease), opacity .25s var(--ease);}
 
   @media (max-width: 900px){
     nav.main-nav{
@@ -345,7 +405,7 @@
   .trust-row{
     display:grid; grid-template-columns:repeat(4,1fr); gap:0;
     border:1px solid var(--line); border-radius:var(--radius-m);
-    overflow:hidden; background:#fff;
+    overflow:hidden; background:var(--surface);
     box-shadow: var(--shadow);
     margin-top:-92px;
     position:relative; z-index:5;
@@ -382,11 +442,11 @@
   .cat-tabs{ display:flex; gap:10px; flex-wrap:wrap; margin-bottom:40px; }
   .cat-tab{
     padding:11px 20px; border-radius:100px; border:1.5px solid var(--line);
-    background:#fff; font-weight:600; font-size:14.5px; cursor:pointer;
+    background:var(--surface); font-weight:600; font-size:14.5px; cursor:pointer;
     color:var(--ink-soft); transition:all .2s var(--ease);
   }
   .cat-tab.active{ background:var(--navy); border-color:var(--navy); color:#fff; }
-  .cat-tab:hover:not(.active){ border-color:var(--blue); color:var(--blue-deep); }
+  .cat-tab:hover:not(.active){ border-color:var(--blue); color:var(--accent-blue); }
 
   .course-grid{
     display:grid; grid-template-columns:repeat(3,1fr); gap:26px;
@@ -395,7 +455,7 @@
   .course-panel.active{ display:grid; grid-template-columns:repeat(3,1fr); gap:26px; }
 
   .course-card{
-    background:#fff; border:1px solid var(--line); border-radius:var(--radius-m);
+    background:var(--surface); border:1px solid var(--line); border-radius:var(--radius-m);
     padding:30px 26px; display:flex; flex-direction:column; gap:16px;
     transition:transform .3s var(--ease), box-shadow .3s var(--ease), border-color .3s var(--ease);
   }
@@ -413,7 +473,7 @@
   .course-card .meta{ font-size:13.5px; color:var(--ink-soft); display:flex; gap:14px; flex-wrap:wrap;}
   .course-card .meta span{ display:flex; align-items:center; gap:6px;}
   .course-card a.card-link{
-    margin-top:auto; font-weight:600; font-size:14.5px; color:var(--blue-deep);
+    margin-top:auto; font-weight:600; font-size:14.5px; color:var(--accent-blue);
     text-decoration:none; display:inline-flex; align-items:center; gap:8px;
   }
   .course-card a.card-link .arrow{ transition:transform .2s var(--ease); }
@@ -479,9 +539,9 @@
   }
   .step{ position:relative; padding-right:24px; }
   .step .step-num{
-    width:52px; height:52px; border-radius:50%; background:#fff; border:2px solid var(--navy);
+    width:52px; height:52px; border-radius:50%; background:var(--surface); border:2px solid var(--heading);
     display:flex; align-items:center; justify-content:center; font-family:'Fraunces',serif;
-    font-weight:600; font-size:19px; color:var(--navy); position:relative; z-index:2; margin-bottom:22px;
+    font-weight:600; font-size:19px; color:var(--heading); position:relative; z-index:2; margin-bottom:22px;
   }
   .step h3{ font-size:17.5px; margin-bottom:8px;}
   .step p{ font-size:14.5px; }
@@ -495,13 +555,13 @@
   .gallery-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:18px; }
   .gallery-item{
     aspect-ratio:1/1.1; border-radius:var(--radius-m); overflow:hidden; position:relative;
-    background:linear-gradient(150deg, var(--mist), #E4EAF1);
+    background:linear-gradient(150deg, var(--mist), var(--mist-2));
     border:1px solid var(--line);
     display:flex; align-items:flex-end;
   }
   .gallery-item.tall{ grid-row:span 2; aspect-ratio:auto; }
   .gallery-caption{
-    padding:18px; font-size:13px; font-weight:600; color:var(--navy);
+    padding:18px; font-size:13px; font-weight:600; color:var(--heading);
     display:flex; align-items:center; gap:8px;
   }
   .gallery-item svg.ph-icon{ position:absolute; top:50%; left:50%; transform:translate(-50%,-58%); opacity:.5;}
@@ -531,10 +591,10 @@
   /* ---------- NextGen relationship ---------- */
   .nextgen-block{
     border:1.5px dashed #C9D6E4; border-radius:var(--radius-l);
-    padding:56px; background:#fff;
+    padding:56px; background:var(--surface);
     display:grid; grid-template-columns:1.2fr 0.8fr; gap:48px; align-items:center;
   }
-  .nextgen-block .eyebrow{ color:var(--green-deep); }
+  .nextgen-block .eyebrow{ color:var(--accent-green); }
   .nextgen-block .eyebrow::before{ background:var(--blue); }
   .nextgen-note{
     font-size:13.5px; color:var(--ink-soft); margin-top:18px; padding-top:18px; border-top:1px solid var(--line);
@@ -542,14 +602,15 @@
   .nextgen-card{
     background:var(--mist); border-radius:var(--radius-m); padding:30px; text-align:center;
   }
-  .nextgen-card .ng-title{ font-family:'Fraunces',serif; font-weight:600; font-size:19px; color:var(--navy); margin-top:14px;}
+  .nextgen-card img{ height:58px; width:auto; margin:0 auto; aspect-ratio:686/300; }
+  .nextgen-card .ng-title{ font-family:'Fraunces',serif; font-weight:600; font-size:19px; color:var(--heading); margin-top:14px;}
   .nextgen-card .ng-sub{ font-size:13px; color:var(--ink-soft); margin-top:6px; font-style:italic;}
   @media (max-width:860px){ .nextgen-block{ grid-template-columns:1fr; padding:36px 26px; } }
 
   /* ---------- Apply / WhatsApp form ---------- */
   .apply-card{
     max-width:620px; margin:0 auto;
-    background:#fff; border:1px solid var(--line); border-radius:var(--radius-l);
+    background:var(--surface); border:1px solid var(--line); border-radius:var(--radius-l);
     padding:44px 44px 40px;
     box-shadow:var(--shadow);
     position:relative; overflow:hidden;
@@ -572,10 +633,10 @@
   .apply-hint{ font-size:14px; margin-bottom:20px; }
 
   .field{ margin-bottom:20px; }
-  .field label{ display:block; font-size:13.5px; font-weight:600; color:var(--navy); margin-bottom:8px; }
+  .field label{ display:block; font-size:13.5px; font-weight:600; color:var(--heading); margin-bottom:8px; }
   .field input, .field select{
     width:100%; padding:13px 16px; border:1.5px solid var(--line); border-radius:10px;
-    font-family:'Inter',sans-serif; font-size:15px; color:var(--ink); background:#fff;
+    font-family:'Inter',sans-serif; font-size:15px; color:var(--ink); background:var(--surface);
     transition:border-color .2s var(--ease);
   }
   .field input:focus, .field select:focus{ outline:none; border-color:var(--blue); }
@@ -590,7 +651,7 @@
   .apply-summary{ margin:0 0 26px; display:flex; flex-direction:column; gap:14px; }
   .apply-summary div{ display:flex; justify-content:space-between; gap:14px; padding-bottom:14px; border-bottom:1px solid var(--line); font-size:14.5px; }
   .apply-summary dt{ color:var(--ink-soft); font-weight:600; }
-  .apply-summary dd{ margin:0; color:var(--navy); font-weight:600; text-align:right; }
+  .apply-summary dd{ margin:0; color:var(--heading); font-weight:600; text-align:right; }
 
   @media (max-width:560px){
     .apply-card{ padding:30px 22px 28px; }
@@ -607,11 +668,17 @@
   .footer-col ul{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:12px;}
   .footer-col a{ color:#B9C7D9; text-decoration:none; font-size:14.5px; }
   .footer-col a:hover{ color:#fff; }
+  .contact-item{ display:flex; align-items:center; gap:10px; color:#B9C7D9; font-size:14.5px; }
+  .contact-item svg{ flex-shrink:0; }
+  a.contact-item:hover{ color:#fff; }
+  a.contact-item:hover svg{ opacity:.85; }
   .footer-desc{ font-size:14.5px; line-height:1.7; max-width:36ch; color:#93A5BB;}
   .footer-bottom{
     margin-top:56px; padding-top:26px; border-top:1px solid rgba(255,255,255,.1);
     display:flex; justify-content:space-between; flex-wrap:wrap; gap:14px; font-size:13.5px; color:#7C90A8;
   }
+  .footer-bottom a{ color:inherit; text-decoration:none; }
+  .footer-bottom a:hover{ color:#fff; }
   @media (max-width:860px){ .footer-grid{ grid-template-columns:1fr 1fr; } }
   @media (max-width:560px){ .footer-grid{ grid-template-columns:1fr; } }
 
@@ -620,7 +687,7 @@
     display:none;
     position:fixed; left:0; right:0; bottom:0; z-index:200;
     padding:12px 16px calc(12px + env(safe-area-inset-bottom));
-    background:rgba(251,252,253,.94); backdrop-filter:blur(10px);
+    background:var(--header-bg); backdrop-filter:blur(10px);
     border-top:1px solid var(--line);
   }
   .mobile-sticky-cta .btn{ width:100%; justify-content:center; }
@@ -658,6 +725,10 @@
     </nav>
     <div class="nav-actions">
       <a href="#contact" class="btn btn-primary btn-sm btn-primary-desktop">Apply / Register</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Switch to dark theme" aria-pressed="false">
+        <svg class="icon-sun" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.8"/><g stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="12" y1="1.5" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22.5"/><line x1="1.5" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22.5" y2="12"/><line x1="4.2" y1="4.2" x2="6" y2="6"/><line x1="18" y1="18" x2="19.8" y2="19.8"/><line x1="4.2" y1="19.8" x2="6" y2="18"/><line x1="18" y1="6" x2="19.8" y2="4.2"/></g></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M20.7 14.8A8.6 8.6 0 0 1 9.2 3.3a8.8 8.8 0 1 0 11.5 11.5Z"/></svg>
+      </button>
       <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mainNav">
         <span></span><span></span><span></span>
       </button>
@@ -692,8 +763,8 @@
     <!-- organic brush / paint-stroke divider -->
     <div class="hero-divider" aria-hidden="true">
       <svg viewBox="0 0 1440 140" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M0,64 C120,92 240,28 380,46 C520,64 610,118 760,104 C910,90 990,34 1140,52 C1260,66 1350,100 1440,72 L1440,140 L0,140 Z" fill="#EFF3F8"/>
-        <path d="M0,80 C140,50 260,108 420,86 C560,66 660,26 820,54 C960,78 1080,106 1220,78 C1320,58 1380,40 1440,58 L1440,140 L0,140 Z" fill="#FBFCFD" opacity="0.65"/>
+        <path d="M0,64 C120,92 240,28 380,46 C520,64 610,118 760,104 C910,90 990,34 1140,52 C1260,66 1350,100 1440,72 L1440,140 L0,140 Z" style="fill:var(--mist)"/>
+        <path d="M0,80 C140,50 260,108 420,86 C560,66 660,26 820,54 C960,78 1080,106 1220,78 C1320,58 1380,40 1440,58 L1440,140 L0,140 Z" style="fill:var(--paper)" opacity="0.65"/>
       </svg>
     </div>
   </section>
@@ -810,28 +881,28 @@
       </div>
       <div class="why-list reveal">
         <div class="why-item">
-          <svg class="icon-mark" viewBox="0 0 44 44" fill="none"><rect x="4" y="4" width="36" height="36" rx="10" fill="#E7F0FF"/><path d="M14 22L19 27L30 16" stroke="#0078FF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <svg class="icon-mark" viewBox="0 0 44 44" fill="none"><rect x="4" y="4" width="36" height="36" rx="10" class="im-blue" fill="#E7F0FF"/><path d="M14 22L19 27L30 16" stroke="#0078FF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
           <div>
             <h3>Practical, hands-on learning</h3>
             <p>Programmes are built around real tools, real procedures and real tasks in each trade or discipline.</p>
           </div>
         </div>
         <div class="why-item">
-          <svg class="icon-mark" viewBox="0 0 44 44" fill="none"><rect x="4" y="4" width="36" height="36" rx="10" fill="#E7F6EC"/><path d="M14 15L22 11L30 15L22 19L14 15Z" stroke="#00933A" stroke-width="2.2" stroke-linejoin="round"/><path d="M17 17V23C17 23 19 26 22 26C25 26 27 23 27 23V17" stroke="#00933A" stroke-width="2.2" stroke-linecap="round"/></svg>
+          <svg class="icon-mark" viewBox="0 0 44 44" fill="none"><rect x="4" y="4" width="36" height="36" rx="10" class="im-green" fill="#E7F6EC"/><path d="M14 15L22 11L30 15L22 19L14 15Z" stroke="#00933A" stroke-width="2.2" stroke-linejoin="round"/><path d="M17 17V23C17 23 19 26 22 26C25 26 27 23 27 23V17" stroke="#00933A" stroke-width="2.2" stroke-linecap="round"/></svg>
           <div>
             <h3>Recognized certification</h3>
             <p>Certificate courses are recognized by the Ministry of Education in Saint Lucia. CVQ is a regional qualification, recognized throughout CARICOM.</p>
           </div>
         </div>
         <div class="why-item">
-          <svg class="icon-mark" viewBox="0 0 44 44" fill="none"><rect x="4" y="4" width="36" height="36" rx="10" fill="#E7F0FF"/><path d="M22 12V32M12 22H32" stroke="#0078FF" stroke-width="2.4" stroke-linecap="round"/></svg>
+          <svg class="icon-mark" viewBox="0 0 44 44" fill="none"><rect x="4" y="4" width="36" height="36" rx="10" class="im-blue" fill="#E7F0FF"/><path d="M22 12V32M12 22H32" stroke="#0078FF" stroke-width="2.4" stroke-linecap="round"/></svg>
           <div>
             <h3>A clear path forward</h3>
             <p>Each programme is structured with a defined duration and outcome, so you know what you&rsquo;re working toward.</p>
           </div>
         </div>
         <div class="why-item">
-          <svg class="icon-mark" viewBox="0 0 44 44" fill="none"><rect x="4" y="4" width="36" height="36" rx="10" fill="#E7F6EC"/><path d="M13 30V18L22 12L31 18V30" stroke="#00933A" stroke-width="2.2" stroke-linejoin="round"/><path d="M18 30V23H26V30" stroke="#00933A" stroke-width="2.2"/></svg>
+          <svg class="icon-mark" viewBox="0 0 44 44" fill="none"><rect x="4" y="4" width="36" height="36" rx="10" class="im-green" fill="#E7F6EC"/><path d="M13 30V18L22 12L31 18V30" stroke="#00933A" stroke-width="2.2" stroke-linejoin="round"/><path d="M18 30V23H26V30" stroke="#00933A" stroke-width="2.2"/></svg>
           <div>
             <h3>For individuals and teams</h3>
             <p>We train people building a career on their own, and organizations building capacity in their workforce.</p>
@@ -938,7 +1009,7 @@
           <a href="index.html" class="btn btn-outline-navy">Learn About NextGen Skills Foundation &rarr;</a>
         </div>
         <div class="nextgen-card">
-          <svg width="46" height="46" viewBox="0 0 46 46" fill="none"><path d="M8 20L23 10L38 20" stroke="#0078FF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><circle cx="30" cy="16" r="3.5" fill="#00933A"/></svg>
+          <img src="assets/logo.png" width="686" height="300" loading="lazy" decoding="async" onerror="this.style.display='none'" alt="NextGen Skills Foundation logo">
           <div class="ng-title">NextGen Skills Foundation</div>
           <div class="ng-sub">&ldquo;Preparing the Next Generation with Essential Skills&rdquo;</div>
         </div>
@@ -1059,19 +1130,24 @@
         <li><a href="https://www.instagram.com/shanphilltraining/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
         <li><a href="https://wa.me/17587127876" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
         <li><a href="index.html">NextGen Skills Foundation</a></li>
+        <li><a href="/legal.html">Legal &amp; Privacy</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>Contact</h4>
       <ul>
-        <li>758.712.7876</li>
-        <li>Saint Lucia</li>
+        <li><a class="contact-item" href="mailto:shanphilltraining@gmail.com"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="1.25" y="3" width="13.5" height="10" rx="1.5" stroke="#fff" stroke-width="1.3"/><path d="M2 4L8 9L14 4" stroke="#fff" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>shanphilltraining@gmail.com</a></li>
+        <li><a class="contact-item" href="tel:+17587127876"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3.4 2.3H5.3C5.7 2.3 6 2.6 6.1 3L6.7 5.5C6.8 5.8 6.7 6.2 6.4 6.4L5.2 7.4C6.1 9.1 7.5 10.5 9.2 11.4L10.2 10.2C10.4 9.9 10.8 9.8 11.1 9.9L13.6 10.5C14 10.6 14.3 10.9 14.3 11.3V13.2C14.3 13.8 13.8 14.3 13.2 14.3C7 14.2 2.1 9.3 2 3.1C2 2.6 2.5 2.1 3.1 2.1L3.4 2.3Z" stroke="#fff" stroke-width="1.3" stroke-linejoin="round"/></svg>1-758-712-7876</a></li>
+        <li><span class="contact-item"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 14.5C8 14.5 13 10.4 13 6.5C13 3.7 10.8 1.5 8 1.5C5.2 1.5 3 3.7 3 6.5C3 10.4 8 14.5 8 14.5Z" stroke="#fff" stroke-width="1.3" stroke-linejoin="round"/><circle cx="8" cy="6.5" r="1.9" stroke="#fff" stroke-width="1.3"/></svg>Saint Lucia</span></li>
       </ul>
     </div>
   </div>
   <div class="container footer-bottom">
     <span>&copy; <span id="year"></span> Shan-Phill Training. All rights reserved.</span>
-    <span>Jamal Samuel built</span>
+    <span style="display:flex; gap:20px; flex-wrap:wrap; align-items:center;">
+      <a href="/legal.html#ccpa-rights">Do Not Sell or Share My Personal Information</a>
+      <span>Jamal Samuel built</span>
+    </span>
   </div>
 </footer>
 
@@ -1081,6 +1157,30 @@
 
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Light / dark theme toggle — auto-set by time of day in <head>; this just
+  // handles the manual override and remembers it in localStorage.
+  (function(){
+    const html = document.documentElement;
+    const btn = document.getElementById('themeToggle');
+    function setLabel(){
+      const isDark = html.getAttribute('data-theme') === 'dark';
+      btn.setAttribute('aria-label', isDark ? 'Switch to light theme' : 'Switch to dark theme');
+      btn.setAttribute('aria-pressed', isDark ? 'true' : 'false');
+    }
+    setLabel();
+    btn.addEventListener('click', () => {
+      const isDark = html.getAttribute('data-theme') === 'dark';
+      if (isDark) {
+        html.removeAttribute('data-theme');
+        try { localStorage.setItem('shanphill-theme', 'light'); } catch(e) {}
+      } else {
+        html.setAttribute('data-theme', 'dark');
+        try { localStorage.setItem('shanphill-theme', 'dark'); } catch(e) {}
+      }
+      setLabel();
+    });
+  })();
 
   // Mobile nav toggle
   const menuToggle = document.getElementById('menuToggle');
