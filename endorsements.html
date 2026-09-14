@@ -327,6 +327,31 @@
     .gov-block, .letter-card{ padding:24px 20px; }
   }
 
+  /* ---------- Accreditation / certification cards ---------- */
+  .cred-grid{ display:grid; grid-template-columns:1fr 1fr; gap:32px; align-items:start; }
+  .cred-card{
+    background:var(--surface); border:1px solid var(--line); border-radius:var(--radius-l);
+    padding:36px; box-shadow:var(--shadow); scroll-margin-top:90px;
+  }
+  .cred-card .gb-icon{
+    width:56px; height:56px; border-radius:14px; background:rgba(4,191,70,.12);
+    display:flex; align-items:center; justify-content:center; margin-bottom:18px;
+  }
+  .cred-card h3{ font-size:20px; margin:0 0 12px; }
+  .cred-card p{ font-size:14.5px; }
+  .cred-card .facts{ list-style:none; margin:18px 0 0; padding:0; display:flex; flex-direction:column; gap:9px; }
+  .cred-card .facts li{ font-size:13.5px; color:var(--ink-soft); display:flex; gap:8px; }
+  .cred-card .facts strong{ color:var(--heading); }
+  .cred-media{ margin-top:22px; max-width:220px; }
+  .cred-media a{ display:block; border-radius:var(--radius-m); overflow:hidden; border:1px solid var(--line); background:var(--mist); }
+  .cred-media img{ width:100%; height:auto; display:block; }
+  @media (max-width:760px){
+    .cred-grid{ grid-template-columns:1fr; }
+  }
+  @media (max-width:480px){
+    .cred-card{ padding:24px 20px; }
+  }
+
   /* ---------- Footer ---------- */
   footer{ background:#071B2E; color:#B9C7D9; padding:72px 0 28px; }
   .footer-grid{ display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:48px; }
@@ -401,6 +426,8 @@
         <a class="jump-chip" href="#nca">National Conservation Authority</a>
         <a class="jump-chip" href="#kickstart">Kick Start Riding &amp; Driving School</a>
         <a class="jump-chip" href="#slisba">SLISBA</a>
+        <a class="jump-chip" href="#new-beginnings">New Beginnings Transit Home</a>
+        <a class="jump-chip" href="#accreditation">Accreditation &amp; Certification</a>
       </nav>
     </div>
   </section>
@@ -550,6 +577,79 @@
           <div class="letter-media">
             <a href="assets/endorsements/slisba.jpg" target="_blank" rel="noopener noreferrer" aria-label="View the SLISBA reference letter at full size (opens in a new tab)">
               <img src="assets/endorsements/slisba.jpg" alt="Reference letter for Shan-Phill Training from SLISBA, signed by Flavia Cherry" width="1017" height="1400" loading="lazy" decoding="async" onerror="this.style.display='none'">
+            </a>
+          </div>
+        </article>
+
+        <article class="letter-card reveal" id="new-beginnings">
+          <div>
+            <div class="letter-org">New Beginnings Transit Home &middot; Ministry of Equity, Social Justice &amp; Empowerment (Government of Saint Lucia)</div>
+            <h2>Avice Charles-Inglis &middot; Manager</h2>
+            <p class="letter-quote">&ldquo;I have had the privilege of working closely with Mrs. Shaniel Phillip&hellip; and have witnessed firsthand her exceptional training skills, professionalism, dedication and passion for empowering others. I therefore recommend Shan-Phil Training as a training institution of choice without hesitation.&rdquo;</p>
+            <div class="letter-actions">
+              <a class="letter-link" href="assets/endorsements/originals/new-beginnings.pdf" download aria-label="Download the New Beginnings Transit Home letter of recommendation as a PDF">Download original PDF &#8595;</a>
+            </div>
+          </div>
+          <div class="letter-media">
+            <a href="assets/endorsements/new-beginnings.jpg" target="_blank" rel="noopener noreferrer" aria-label="View the New Beginnings Transit Home letter of recommendation at full size (opens in a new tab)">
+              <img src="assets/endorsements/new-beginnings.jpg" alt="Letter of recommendation for Shan-Phill Training from New Beginnings Transit Home, Government of Saint Lucia, signed by Avice Charles-Inglis" width="1082" height="1400" loading="lazy" decoding="async" onerror="this.style.display='none'">
+            </a>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ACCREDITATION & CERTIFICATION ============ -->
+  <section class="section" id="accreditation">
+    <div class="container">
+      <div class="section-head reveal" style="max-width:660px; margin-bottom:48px;">
+        <div class="eyebrow">Accreditation &amp; certification</div>
+        <h2 style="font-size:clamp(1.6rem,3vw,2.1rem);">Officially approved and permitted to train.</h2>
+        <p>Beyond endorsement letters, Shan-Phill Training operates under a Ministry of Education permit and is certified as an approved centre by SLCTVET &mdash; the two credentials that put its CVQ programmes on an official footing.</p>
+      </div>
+
+      <div class="cred-grid">
+
+        <article class="cred-card reveal" id="certificate">
+          <div class="gb-icon">
+            <svg width="26" height="26" viewBox="0 0 26 26" fill="none"><path d="M13 3L21 7V13C21 18 17.5 21.7 13 23C8.5 21.7 5 18 5 13V7L13 3Z" stroke="#04BF46" stroke-width="2" stroke-linejoin="round"/><path d="M9.5 13L12 15.5L17 10" stroke="#04BF46" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>SLCTVET Approved Centre</h3>
+          <p>Shan-Phill Training is certified as an Approved Centre by the Saint Lucia Council for Technical and Vocational Education and Training (SLCTVET), the national body responsible for CVQ certification standards.</p>
+          <ul class="facts">
+            <li><strong>Centre number:</strong> SPHT23-04/25</li>
+            <li><strong>Approval period:</strong> May 2025 &ndash; April 2028</li>
+            <li><strong>Issued by:</strong> The Saint Lucia Council for Technical and Vocational Education and Training</li>
+          </ul>
+          <div class="letter-actions">
+            <a class="letter-link" href="assets/endorsements/originals/certificate.jpg" download aria-label="Download the SLCTVET Approved Centre certificate as an image">Download original image &#8595;</a>
+          </div>
+          <div class="cred-media">
+            <a href="assets/endorsements/certificate.jpg" target="_blank" rel="noopener noreferrer" aria-label="View the SLCTVET Approved Centre certificate at full size (opens in a new tab)">
+              <img src="assets/endorsements/certificate.jpg" alt="SLCTVET Approved Centre certificate issued to Shan-Phill Training, Centre Number SPHT23-04/25, approval period May 2025 to April 2028" width="857" height="1280" loading="lazy" decoding="async" onerror="this.style.display='none'">
+            </a>
+          </div>
+        </article>
+
+        <article class="cred-card reveal" id="permit">
+          <div class="gb-icon">
+            <svg width="26" height="26" viewBox="0 0 26 26" fill="none"><path d="M13 3L21 7V13C21 18 17.5 21.7 13 23C8.5 21.7 5 18 5 13V7L13 3Z" stroke="#04BF46" stroke-width="2" stroke-linejoin="round"/><path d="M9.5 13L12 15.5L17 10" stroke="#04BF46" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>Private Educational Institution Permit</h3>
+          <p>Shan-Phill Training holds a Private Educational Institution Permit from the Ministry of Education, granted under the Saint Lucia Education Act, authorizing it to deliver training leading to CVQ certification.</p>
+          <ul class="facts">
+            <li><strong>Issued by:</strong> Ministry of Education, Sustainable Development, Innovation, Science, Technology and Vocational Training</li>
+            <li><strong>Approved courses:</strong> Electrical Installation (all levels), Community Tourism, Customer Service, Supervisory Management</li>
+            <li><strong>Permit period:</strong> May 10, 2025 &ndash; May 9, 2028</li>
+          </ul>
+          <div class="letter-actions">
+            <a class="letter-link" href="assets/endorsements/originals/permit.jpg" download aria-label="Download the Private Educational Institution Permit as an image">Download original image &#8595;</a>
+          </div>
+          <div class="cred-media">
+            <a href="assets/endorsements/permit.jpg" target="_blank" rel="noopener noreferrer" aria-label="View the Private Educational Institution Permit at full size (opens in a new tab)">
+              <img src="assets/endorsements/permit.jpg" alt="Private Educational Institution Permit issued to Shaniel Phillip of Shan-Phill Training by the Ministry of Education, valid to May 9, 2028" width="989" height="1280" loading="lazy" decoding="async" onerror="this.style.display='none'">
             </a>
           </div>
         </article>
