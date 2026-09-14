@@ -651,7 +651,7 @@
   .nextgen-card{
     background:var(--mist); border-radius:var(--radius-m); padding:30px; text-align:center;
   }
-  .nextgen-card img{ height:58px; width:auto; margin:0 auto; aspect-ratio:686/300; }
+  .nextgen-card img{ height:58px; width:auto; margin:0 auto; aspect-ratio:461/180; }
   .nextgen-card .ng-title{ font-family:'Fraunces',serif; font-weight:600; font-size:19px; color:var(--heading); margin-top:14px;}
   .nextgen-card .ng-sub{ font-size:13px; color:var(--ink-soft); margin-top:6px; font-style:italic;}
   @media (max-width:860px){ .nextgen-block{ grid-template-columns:1fr; padding:36px 26px; } }
@@ -1103,7 +1103,10 @@
           <a href="index.html" class="btn btn-outline-navy">Learn About NextGen Skills Foundation &rarr;</a>
         </div>
         <div class="nextgen-card">
-          <img src="assets/logo.png" width="686" height="300" loading="lazy" decoding="async" onerror="this.style.display='none'" alt="NextGen Skills Foundation logo">
+          <picture>
+            <source srcset="assets/logo-footer.webp" type="image/webp">
+            <img src="assets/logo-footer.png" width="461" height="180" loading="lazy" decoding="async" onerror="this.style.display='none'" alt="NextGen Skills Foundation logo">
+          </picture>
           <div class="ng-title">NextGen Skills Foundation</div>
           <div class="ng-sub">&ldquo;Preparing the Next Generation with Essential Skills&rdquo;</div>
         </div>
