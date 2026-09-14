@@ -355,7 +355,7 @@
   /* ---------- Footer ---------- */
   footer{ background:#071B2E; color:#B9C7D9; padding:72px 0 28px; }
   .footer-grid{ display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:48px; }
-  .footer-logo img{ height:40px; width:auto; aspect-ratio:686/300; margin-bottom:18px; }
+  .footer-logo img{ height:60px; width:auto; aspect-ratio:461/180; margin-bottom:18px; }
   .footer-col h3{ color:#fff; font-size:14px; letter-spacing:.02em; margin-bottom:18px; font-family:'Inter',sans-serif; font-weight:700;}
   .footer-col ul{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:12px;}
   .footer-col a{ color:#B9C7D9; text-decoration:none; font-size:14.5px; }
@@ -385,7 +385,10 @@
 <header role="banner">
   <div class="nav-wrap">
     <a href="index.html" class="logo-link" aria-label="NextGen Skills Foundation home">
-      <img src="assets/logo.png" width="686" height="300" loading="eager" decoding="async" onerror="this.style.display='none'" alt="NextGen Skills Foundation logo">
+      <picture>
+        <source srcset="assets/logo-header.webp" type="image/webp">
+        <img src="assets/logo-header.png" width="381" height="126" loading="eager" decoding="async" onerror="this.style.display='none'" alt="NextGen Skills Foundation logo">
+      </picture>
     </a>
     <nav class="main-nav" id="mainNav" role="navigation" aria-label="Main navigation">
       <a href="index.html#about">About</a>
@@ -527,8 +530,8 @@
             </div>
           </div>
           <div class="letter-media">
-            <a href="assets/endorsements/seeds.jpeg" target="_blank" rel="noopener noreferrer" aria-label="View the SEEDS letter of recommendation at full size (opens in a new tab)">
-              <img src="assets/endorsements/seeds.jpeg" alt="Letter of recommendation for Shan-Phill Training from SEEDS Resource Center / The Ubuntu Movement, signed by Snard CJ Alexander" width="1081" height="1400" loading="lazy" decoding="async" onerror="this.style.display='none'">
+            <a href="assets/endorsements/seeds.jpg" target="_blank" rel="noopener noreferrer" aria-label="View the SEEDS letter of recommendation at full size (opens in a new tab)">
+              <img src="assets/endorsements/seeds.jpg" alt="Letter of recommendation for Shan-Phill Training from SEEDS Resource Center / The Ubuntu Movement, signed by Snard CJ Alexander" width="1081" height="1400" loading="lazy" decoding="async" onerror="this.style.display='none'">
             </a>
           </div>
         </article>
@@ -543,8 +546,8 @@
             </div>
           </div>
           <div class="letter-media">
-            <a href="assets/endorsements/nca.jpeg" target="_blank" rel="noopener noreferrer" aria-label="View the National Conservation Authority letter of recommendation at full size (opens in a new tab)">
-              <img src="assets/endorsements/nca.jpeg" alt="Letter of recommendation for Shan-Phill Training from the National Conservation Authority, signed by James Perineau" width="989" height="1400" loading="lazy" decoding="async" onerror="this.style.display='none'">
+            <a href="assets/endorsements/nca.jpg" target="_blank" rel="noopener noreferrer" aria-label="View the National Conservation Authority letter of recommendation at full size (opens in a new tab)">
+              <img src="assets/endorsements/nca.jpg" alt="Letter of recommendation for Shan-Phill Training from the National Conservation Authority, signed by James Perineau" width="989" height="1400" loading="lazy" decoding="async" onerror="this.style.display='none'">
             </a>
           </div>
         </article>
@@ -559,8 +562,8 @@
             </div>
           </div>
           <div class="letter-media">
-            <a href="assets/endorsements/kickstart.jpeg" target="_blank" rel="noopener noreferrer" aria-label="View the Kick Start letter of recommendation at full size (opens in a new tab)">
-              <img src="assets/endorsements/kickstart.jpeg" alt="Letter of recommendation for Shan-Phill Training from Kick Start Riding & Driving School, signed by Avellina Stacy Nelson" width="1081" height="1400" loading="lazy" decoding="async" onerror="this.style.display='none'">
+            <a href="assets/endorsements/kickstart.jpg" target="_blank" rel="noopener noreferrer" aria-label="View the Kick Start letter of recommendation at full size (opens in a new tab)">
+              <img src="assets/endorsements/kickstart.jpg" alt="Letter of recommendation for Shan-Phill Training from Kick Start Riding & Driving School, signed by Avellina Stacy Nelson" width="1081" height="1400" loading="lazy" decoding="async" onerror="this.style.display='none'">
             </a>
           </div>
         </article>
@@ -663,7 +666,12 @@
 <footer role="contentinfo">
   <div class="container footer-grid">
     <div>
-      <div class="footer-logo"><img src="assets/logo-footer.png" width="686" height="300" loading="lazy" decoding="async" onerror="this.style.display='none'" alt="NextGen Skills Foundation"></div>
+      <div class="footer-logo">
+        <picture>
+          <source srcset="assets/logo-footer.webp" type="image/webp">
+          <img src="assets/logo-footer.png" width="461" height="180" loading="lazy" decoding="async" onerror="this.style.display='none'" alt="NextGen Skills Foundation">
+        </picture>
+      </div>
       <p class="footer-desc">Preparing the next generation with essential skills &mdash; practical vocational training, CVQ certification and personal development in Saint Lucia.</p>
     </div>
     <div class="footer-col">
