@@ -10,7 +10,7 @@
                script-src 'self' 'unsafe-inline' https://cdn-cookieyes.com https://www.googletagmanager.com;
                style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn-cookieyes.com;
                font-src https://fonts.gstatic.com;
-               img-src 'self' data: https:;
+               img-src 'self' data:;
                connect-src 'self' https://formspree.io https://cdn-cookieyes.com https://log.cookieyes.com https://directory.cookieyes.com https://www.google-analytics.com https://analytics.google.com https://region1.google-analytics.com;
                object-src 'none';
                base-uri 'self';
@@ -644,9 +644,8 @@
   <section class="hero">
     <div class="hero-media">
       <picture>
-        <source media="(max-width: 700px)" srcset="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&amp;w=1000&amp;auto=format&amp;fit=crop">
-        <source media="(min-width: 701px)" srcset="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&amp;w=2000&amp;auto=format&amp;fit=crop">
-        <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&amp;w=2000&amp;auto=format&amp;fit=crop" alt="A trainee in a hard hat installing electrical wiring during hands-on skills training" loading="eager" decoding="sync" width="2000" height="1333" onerror="this.style.display='none'">
+        <source srcset="images/hero-bg.webp" type="image/webp">
+        <img src="images/hero-bg.jpg" alt="A trainee in a hard hat installing electrical wiring during hands-on skills training" loading="eager" fetchpriority="high" decoding="async" width="1672" height="940" onerror="this.style.display='none'">
       </picture>
     </div>
     <div class="container hero-content">
