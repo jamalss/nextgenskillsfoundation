@@ -10,7 +10,7 @@
                script-src 'self' 'unsafe-inline' https://cdn-cookieyes.com https://www.googletagmanager.com;
                style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn-cookieyes.com;
                font-src https://fonts.gstatic.com;
-               img-src 'self' data: https:;
+               img-src 'self' data: https://cdn-cookieyes.com;
                connect-src 'self' https://cdn-cookieyes.com https://log.cookieyes.com https://directory.cookieyes.com https://www.google-analytics.com https://analytics.google.com https://region1.google-analytics.com https://formspree.io;
                object-src 'none';
                base-uri 'self';
@@ -118,19 +118,22 @@
       "@type": "Course",
       "name": "Electrical Installation (Level 1)",
       "description": "Foundational, hands-on training in residential electrical installation practices.",
-      "provider": { "@type": "EducationalOrganization", "name": "Shan-Phill Training" }
+      "provider": { "@type": "EducationalOrganization", "name": "Shan-Phill Training" },
+      "timeRequired": "P4M"
     },
     {
       "@type": "Course",
       "name": "Electrical Installation (Level 2)",
       "description": "Builds on Level 1 with more advanced installation skills and procedures.",
-      "provider": { "@type": "EducationalOrganization", "name": "Shan-Phill Training" }
+      "provider": { "@type": "EducationalOrganization", "name": "Shan-Phill Training" },
+      "timeRequired": "P4M"
     },
     {
       "@type": "Course",
       "name": "Electrical Installation (Level 3)",
       "description": "The advanced tier of the Electrical Installation pathway, building toward full trade competency.",
-      "provider": { "@type": "EducationalOrganization", "name": "Shan-Phill Training" }
+      "provider": { "@type": "EducationalOrganization", "name": "Shan-Phill Training" },
+      "timeRequired": "P4M"
     },
     {
       "@type": "Course",
@@ -1250,6 +1253,8 @@
 </div>
 
 <script>
+document.addEventListener('DOMContentLoaded', function() {
+
   document.getElementById('year').textContent = new Date().getFullYear();
 
   // Light / dark theme toggle — auto-set by time of day in <head>; this just
@@ -1527,6 +1532,8 @@
   } else {
     document.querySelectorAll('.reveal').forEach(el => el.classList.add('is-visible'));
   }
+
+});
 </script>
 
 </body>
