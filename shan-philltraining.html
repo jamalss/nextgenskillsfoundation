@@ -11,10 +11,10 @@
                style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn-cookieyes.com;
                font-src https://fonts.gstatic.com;
                img-src 'self' data: https:;
-               connect-src 'self' https://cdn-cookieyes.com https://log.cookieyes.com https://directory.cookieyes.com https://www.google-analytics.com https://analytics.google.com https://region1.google-analytics.com;
+               connect-src 'self' https://cdn-cookieyes.com https://log.cookieyes.com https://directory.cookieyes.com https://www.google-analytics.com https://analytics.google.com https://region1.google-analytics.com https://formspree.io;
                object-src 'none';
                base-uri 'self';
-               form-action 'self';">
+               form-action 'self' https://formspree.io;">
 <meta http-equiv="X-Content-Type-Options" content="nosniff">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta http-equiv="Permissions-Policy"
@@ -1121,13 +1121,18 @@
           <span class="apply-step-label">Step <span id="stepCurrent">1</span> of 3</span>
         </div>
 
-        <form id="applyForm" novalidate>
+        <form id="onboardForm" action="https://formspree.io/f/mgaejwjw" method="POST" novalidate aria-label="Get involved form">
+
+          <!-- Honeypot field — catches bots, invisible to humans -->
+          <input type="text" name="_gotcha" style="display:none" tabindex="-1" aria-hidden="true" autocomplete="off">
+          <!-- Subject line control -->
+          <input type="hidden" name="_subject" value="New training inquiry from Shan-Phill Training website">
 
           <div class="apply-step active" data-step="1">
             <h3 tabindex="-1">Which programme are you interested in?</h3>
             <div class="field" id="field-course">
               <label for="f-course">Programme</label>
-              <select id="f-course" required aria-required="true" aria-describedby="error-course">
+              <select id="f-course" name="course" required aria-required="true" aria-describedby="error-course">
                 <option value="" disabled selected>Select a programme</option>
                 <optgroup label="CVQ &amp; Vocational Training">
                   <option>Electrical Installation (Level 1)</option>
@@ -1152,17 +1157,22 @@
             <h3 tabindex="-1">Your details</h3>
             <div class="field" id="field-name">
               <label for="f-name">Full name</label>
-              <input id="f-name" type="text" required aria-required="true" placeholder="e.g. Jane Charles" autocomplete="name" aria-describedby="error-name">
+              <input id="f-name" name="name" type="text" required aria-required="true" placeholder="e.g. Jane Charles" autocomplete="name" maxlength="100" aria-describedby="error-name">
               <div class="field-error" id="error-name" role="alert">Please enter your full name.</div>
+            </div>
+            <div class="field" id="field-email">
+              <label for="f-email">Email address</label>
+              <input id="f-email" name="email" type="email" required aria-required="true" placeholder="e.g. jane@email.com" autocomplete="email" maxlength="254" aria-describedby="error-email">
+              <div class="field-error" id="error-email" role="alert">Please enter a valid email address.</div>
             </div>
             <div class="field" id="field-phone">
               <label for="f-phone">Contact number</label>
-              <input id="f-phone" type="tel" required aria-required="true" placeholder="e.g. +1 758 123 4567" autocomplete="tel" aria-describedby="error-phone">
+              <input id="f-phone" name="phone" type="tel" required aria-required="true" placeholder="e.g. +1 758 123 4567" autocomplete="tel" maxlength="30" aria-describedby="error-phone">
               <div class="field-error" id="error-phone" role="alert">Please enter a contact number.</div>
             </div>
             <div class="field">
               <label for="f-status">Employment status</label>
-              <select id="f-status">
+              <select id="f-status" name="status">
                 <option value="" disabled selected>Select one</option>
                 <option>Full Time Employee</option>
                 <option>Part Time Employee</option>
@@ -1328,7 +1338,7 @@
 
   // Apply / WhatsApp multi-step inquiry form
   (function(){
-    const form = document.getElementById('applyForm');
+    const form = document.getElementById('onboardForm');
     if (!form) return;
     const WHATSAPP_NUMBER = '17587127876';
     const steps = Array.from(form.querySelectorAll('.apply-step'));
@@ -1336,9 +1346,11 @@
     const stepLabel = document.getElementById('stepCurrent');
     let current = 1;
     let hasNavigated = false; // don't steal focus on the initial render
+    let formspreeSent = false; // guard against double-firing on a rapid double click
 
     const courseEl = document.getElementById('f-course');
     const nameEl = document.getElementById('f-name');
+    const emailEl = document.getElementById('f-email');
     const phoneEl = document.getElementById('f-phone');
     const statusEl = document.getElementById('f-status');
     const summaryEl = document.getElementById('applySummary');
@@ -1382,6 +1394,12 @@
       return digitCount >= 7 && digitCount <= 15;
     }
 
+    // Simple, deliberately permissive shape check (not full RFC 5322) —
+    // catches typos without rejecting real addresses.
+    function isEmailValid(value){
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim());
+    }
+
     function setFieldState(fieldId, errorId, invalid, message){
       const field = document.getElementById(fieldId);
       const errorEl = document.getElementById(errorId);
@@ -1405,6 +1423,12 @@
         : 'Please enter a valid name (at least 2 letters).';
       setFieldState('field-name', 'error-name', !nameOk, nameMessage);
 
+      const emailOk = isEmailValid(emailEl.value);
+      const emailMessage = emailEl.value.trim().length === 0
+        ? 'Please enter your email address.'
+        : 'Please enter a valid email address.';
+      setFieldState('field-email', 'error-email', !emailOk, emailMessage);
+
       const phoneOk = isPhoneValid(phoneEl.value);
       const phoneMessage = phoneEl.value.trim().length === 0
         ? 'Please enter a contact number.'
@@ -1414,10 +1438,12 @@
       // Move focus to whichever invalid field comes first.
       if (!nameOk) {
         nameEl.focus();
+      } else if (!emailOk) {
+        emailEl.focus();
       } else if (!phoneOk) {
         phoneEl.focus();
       }
-      return nameOk && phoneOk;
+      return nameOk && emailOk && phoneOk;
     }
 
     function buildSummary(){
@@ -1425,6 +1451,7 @@
       summaryEl.innerHTML = `
         <div><dt>Programme</dt><dd>${escapeHtml(courseEl.value)}</dd></div>
         <div><dt>Name</dt><dd>${escapeHtml(nameEl.value)}</dd></div>
+        <div><dt>Email</dt><dd>${escapeHtml(emailEl.value)}</dd></div>
         <div><dt>Contact</dt><dd>${escapeHtml(phoneEl.value)}</dd></div>
         <div><dt>Employment status</dt><dd>${escapeHtml(status)}</dd></div>
       `;
@@ -1433,16 +1460,35 @@
         "",
         `Programme: ${courseEl.value}`,
         `Name: ${nameEl.value.trim()}`,
+        `Email: ${emailEl.value.trim()}`,
         `Contact number: ${phoneEl.value.trim()}`,
         `Employment status: ${status}`
       ].join('\n');
       sendLink.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+      formspreeSent = false; // fields could have changed via Back — allow a fresh send
     }
 
     function escapeHtml(str){
       const div = document.createElement('div');
       div.textContent = str;
       return div.innerHTML;
+    }
+
+    // Submit the same data to Formspree (email notification to Shan-Phill
+    // Training) in the background, without blocking or interfering with the
+    // WhatsApp deep link below — the <a> tag's own href/target still does
+    // its normal job, this just fires alongside it. Fetch failures are
+    // logged only; WhatsApp remains the primary, always-working path.
+    function sendToFormspree(){
+      if (formspreeSent) return;
+      formspreeSent = true;
+      fetch(form.action, {
+        method: form.method,
+        body: new FormData(form),
+        headers: { Accept: 'application/json' }
+      }).catch(err => {
+        console.error('Formspree submission failed:', err);
+      });
     }
 
     form.querySelectorAll('[data-next]').forEach(btn => {
@@ -1461,7 +1507,9 @@
     });
     courseEl.addEventListener('input', () => setFieldState('field-course', 'error-course', false));
     nameEl.addEventListener('input', () => setFieldState('field-name', 'error-name', false));
+    emailEl.addEventListener('input', () => setFieldState('field-email', 'error-email', false));
     phoneEl.addEventListener('input', () => setFieldState('field-phone', 'error-phone', false));
+    sendLink.addEventListener('click', sendToFormspree);
   })();
 
   // Scroll reveal
