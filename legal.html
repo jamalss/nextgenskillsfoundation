@@ -285,14 +285,20 @@
       Formspree (Section 6) and is not visible to Shan-Phill Training. It does not ask for payment details,
       government ID numbers, or any information beyond what that form requests.</p>
       <h3>Shan-Phill Training</h3>
-      <p>The Shan-Phill Training page does not use a server-side form. Its "Apply / Register" tool is a
-      client-side wizard: it asks which programme you're interested in and your name and contact details, and
-      uses that information only to pre-fill a WhatsApp message. Nothing is transmitted to Shan-Phill Training,
-      NextGen Skills Foundation, or any server when you fill in the wizard — the information stays in your own
-      browser until you press "Send" and are handed off to WhatsApp, at which point WhatsApp (Meta) receives
-      and delivers the message under its own privacy policy, linked in Section 6. If you close the page or
-      never press "Send," nothing is collected by anyone. This is unaffected by the site-wide GA4/CookieYes
-      setup described above, which governs analytics only, not this wizard.</p>
+      <p>The Shan-Phill Training page's "Apply / Register" tool is a multi-step wizard that asks which
+      programme you're interested in, your full name, your email address, your phone number, and
+      (optionally) your employment status. While you are filling it in, this information stays in your own
+      browser — nothing is transmitted anywhere. When you press "Send via WhatsApp" at the final step, two
+      things happen at the same time: (1) the information is used to pre-fill a WhatsApp message and hand you
+      off to WhatsApp, where WhatsApp (Meta) receives and delivers that message only if you then press send
+      within WhatsApp itself, under its own privacy policy linked in Section 6; and (2) the same information
+      (programme, name, email, phone number, and employment status if provided) is submitted directly to
+      Shan-Phill Training by email, via a Formspree form separate from NextGen's (Section 6). This Formspree
+      submission happens automatically the moment you press "Send via WhatsApp" — it does not require you to
+      complete the WhatsApp step, and it still happens even if you close WhatsApp afterward without sending
+      that message there. If you close the page before reaching the final step and pressing "Send via
+      WhatsApp," nothing is collected by anyone. This is unaffected by the site-wide GA4/CookieYes setup
+      described above, which governs analytics only, not this wizard.</p>
     </div>
 
     <div class="card" id="why-we-collect">
@@ -305,10 +311,10 @@
         <li>Respond to inquiries, referrals and applications submitted through the Get Involved form.</li>
         <li>Keep track of programme participants, referring schools, partners and sponsors.</li>
       </ul>
-      <p><strong>Shan-Phill Training</strong> uses the information entered into its Apply/Register wizard
-      only to build the WhatsApp message you choose to send — to identify which programme you're asking
-      about and how to reach you. It is not stored, logged or analyzed anywhere by Shan-Phill Training beyond
-      the resulting WhatsApp conversation.</p>
+      <p><strong>Shan-Phill Training</strong> uses the information entered into its Apply/Register wizard to
+      identify which programme you're asking about and to respond to you — both through the WhatsApp
+      conversation and through the emailed copy it receives via Formspree, described in Section 2. It is not
+      used for any other purpose, and is not analyzed or profiled.</p>
       <p>Neither organization sells personal data or uses the information you submit for advertising or
       profiling.</p>
     </div>
@@ -327,9 +333,10 @@
       </ul>
       <p>You may withdraw consent at any time — for cookies, by reopening the consent settings described in
       Section 5; for form submissions, by emailing NextGen Skills Foundation at the address in Section 19.</p>
-      <p>For <strong>Shan-Phill Training</strong>, no data is processed until you press "Send" in the
-      Apply/Register wizard and hand the resulting message to WhatsApp yourself — at that point, the legal
-      basis is your own consent to make contact, given by that action.</p>
+      <p>For <strong>Shan-Phill Training</strong>, no data is processed until you press "Send via WhatsApp" in
+      the Apply/Register wizard — at that point, the legal basis for both resulting data flows (the WhatsApp
+      handoff and the Formspree email copy sent to Shan-Phill Training, described in Section 2) is your own
+      consent to make contact, given by that single action.</p>
     </div>
 
     <div class="card" id="cookies">
@@ -381,14 +388,21 @@
       <h3>Shan-Phill Training only</h3>
       <ul>
         <li><strong>WhatsApp (Meta)</strong> — the Apply/Register wizard hands your message to WhatsApp only
-        when you press "Send." WhatsApp's own privacy policy, at
+        if you go on to press send within WhatsApp itself, after being handed off there. WhatsApp's own
+        privacy policy, at
         <a href="https://www.whatsapp.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer">whatsapp.com/legal/privacy-policy</a>,
         governs what happens to that message from that point on.</li>
+        <li><strong>Formspree</strong> — pressing "Send via WhatsApp" also submits your programme, name,
+        email, phone number and employment status (if provided) directly to Shan-Phill Training by email,
+        using a Formspree form of its own, separate from NextGen's. See
+        <a href="https://formspree.io/legal/privacy-policy/" target="_blank" rel="noopener noreferrer">Formspree's privacy policy</a>.
+        This submission is not shared with NextGen Skills Foundation.</li>
       </ul>
-      <p>Shan-Phill Training does not use Formspree. NextGen Skills Foundation's form does not hand data to
-      Shan-Phill Training or WhatsApp. Nothing on this domain uses Facebook Pixel, PayPal, or any advertising
-      network. No page uses any third-party service beyond what is listed above. If that changes for any
-      page, this page will be updated first.</p>
+      <p>NextGen Skills Foundation and Shan-Phill Training each use their own, separate Formspree form —
+      neither organization sees the other's form submissions, and neither organization's form hands data to
+      WhatsApp. Nothing on this domain uses Facebook Pixel, PayPal, or any advertising network. No page uses
+      any third-party service beyond what is listed above. If that changes for any page, this page will be
+      updated first.</p>
     </div>
 
     <div class="card" id="international">
@@ -426,7 +440,7 @@
         <table class="data-table">
           <thead><tr><th>Category</th><th>Collected?</th><th>Source</th><th>Purpose</th></tr></thead>
           <tbody>
-            <tr><td>Identifiers (name, email)</td><td>Yes</td><td>Get Involved form</td><td>Responding to your inquiry</td></tr>
+            <tr><td>Identifiers (name, email, phone)</td><td>Yes</td><td>Get Involved form (NextGen Skills Foundation) and Apply/Register wizard (Shan-Phill Training)</td><td>Responding to your inquiry</td></tr>
             <tr><td>Commercial information</td><td>No</td><td>—</td><td>Not applicable — this site does not sell products or services</td></tr>
             <tr><td>Internet/network activity</td><td>Yes, if you consent</td><td>Google Analytics 4</td><td>Understanding site usage</td></tr>
             <tr><td>Geolocation (approximate, city/country level)</td><td>Yes, if you consent</td><td>Google Analytics 4</td><td>Understanding visitor location</td></tr>
@@ -500,7 +514,8 @@
         <table class="data-table">
           <thead><tr><th>Data type</th><th>Retention period</th><th>Reason</th></tr></thead>
           <tbody>
-            <tr><td>Get Involved form submissions</td><td>As long as needed to respond and, where relevant, maintain programme/partner records</td><td>Ongoing programme administration</td></tr>
+            <tr><td>Get Involved form submissions (NextGen Skills Foundation)</td><td>As long as needed to respond and, where relevant, maintain programme/partner records</td><td>Ongoing programme administration</td></tr>
+            <tr><td>Apply/Register wizard submissions (Shan-Phill Training)</td><td>As long as needed to respond to your inquiry</td><td>Ongoing enrollment/inquiry administration</td></tr>
             <tr><td>Google Analytics 4 data</td><td>14 months, then automatically deleted by Google</td><td>GA4's own minimum retention setting</td></tr>
             <tr><td>Cookie consent record (CookieYes)</td><td>12 months</td><td>So we don't ask again unnecessarily</td></tr>
           </tbody>
