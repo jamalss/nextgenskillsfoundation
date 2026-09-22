@@ -1482,18 +1482,27 @@ document.addEventListener('DOMContentLoaded', function() {
     // Submit the same data to Formspree (email notification to Shan-Phill
     // Training) in the background, without blocking or interfering with the
     // WhatsApp deep link below — the <a> tag's own href/target still does
-    // its normal job, this just fires alongside it. Fetch failures are
-    // logged only; WhatsApp remains the primary, always-working path.
+    // its normal job (opens WhatsApp in a new tab, since sendLink is
+    // target="_blank"), this just fires alongside it. keepalive:true keeps
+    // the request alive past the redirect below, so navigating away doesn't
+    // cut it off mid-flight. Fetch failures are logged only; WhatsApp
+    // remains the primary, always-working path, and this tab still moves on
+    // to the thank-you page either way — the emailed copy is a courtesy,
+    // not something the visitor should be blocked on or told about failing.
     function sendToFormspree(){
       if (formspreeSent) return;
       formspreeSent = true;
       fetch(form.action, {
         method: form.method,
         body: new FormData(form),
-        headers: { Accept: 'application/json' }
+        headers: { Accept: 'application/json' },
+        keepalive: true
       }).catch(err => {
         console.error('Formspree submission failed:', err);
       });
+      // WhatsApp opened in its own tab above; this tab moves on to confirm
+      // the inquiry was received.
+      window.location.href = 'thank-you-shan-phill.html';
     }
 
     form.querySelectorAll('[data-next]').forEach(btn => {
