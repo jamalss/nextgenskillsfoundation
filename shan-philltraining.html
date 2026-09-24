@@ -457,6 +457,58 @@
   .section-head p{ font-size:17.5px; margin-top:16px; }
   .section-alt{ background:var(--mist); }
 
+  /* ---------- Active cohorts status strip ----------
+     TEMPORARY, cohort-specific content — this block (and the matching
+     .status-badge tags inside the CVQ course cards) exists only while a
+     cohort is actually in session. Update the wording as cohorts change,
+     and delete the whole status-strip section plus the .status-badge
+     spans once nothing is currently running. Do not leave this showing a
+     cohort that has already finished. */
+  .status-strip{ padding:48px 0 0; }
+  .status-strip-inner{
+    display:flex; align-items:flex-start; gap:18px;
+    background:var(--surface); border:1.5px solid #F0C177; border-left:5px solid #C97C0A;
+    border-radius:var(--radius-m); padding:24px 28px; box-shadow:var(--shadow);
+  }
+  .status-dot{
+    flex-shrink:0; width:10px; height:10px; border-radius:50%; background:#C97C0A;
+    margin-top:7px; position:relative;
+  }
+  .status-dot::after{
+    content:""; position:absolute; inset:-5px; border-radius:50%; background:#C97C0A;
+    opacity:.35; animation:statusPulse 2s ease-out infinite;
+  }
+  @keyframes statusPulse{
+    0%{ transform:scale(.6); opacity:.45; }
+    70%{ transform:scale(1.9); opacity:0; }
+    100%{ opacity:0; }
+  }
+  .status-label{
+    display:block; font-size:12.5px; font-weight:700; letter-spacing:.04em; text-transform:uppercase;
+    color:#8A5A12; margin-bottom:6px;
+  }
+  .status-strip-inner p{ font-size:15px; color:var(--ink); line-height:1.6; margin:0 0 10px; }
+  .status-strip-inner a.card-link{
+    margin-top:auto; font-weight:600; font-size:14.5px; color:var(--accent-blue);
+    text-decoration:none; display:inline-flex; align-items:center; gap:8px;
+  }
+  .status-strip-inner a.card-link .arrow{ transition:transform .2s var(--ease); }
+  .status-strip-inner a.card-link:hover .arrow{ transform:translateX(4px); }
+  html[data-theme="dark"] .status-strip-inner{ border-color:#5A3E14; border-left-color:#FFB74D; }
+  html[data-theme="dark"] .status-dot, html[data-theme="dark"] .status-dot::after{ background:#FFB74D; }
+  html[data-theme="dark"] .status-label{ color:#FFD08A; }
+  @media (max-width:560px){ .status-strip-inner{ padding:20px 20px; } }
+
+  .course-card-tags{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+  .status-badge{
+    display:inline-flex; align-items:center; gap:7px; align-self:flex-start;
+    font-size:12px; font-weight:700; letter-spacing:.02em;
+    color:#8A5A12; background:#FFF1DC; padding:5px 12px 5px 10px; border-radius:100px;
+  }
+  .status-badge .status-dot{ width:7px; height:7px; margin-top:0; }
+  .status-badge .status-dot::after{ inset:-4px; }
+  html[data-theme="dark"] .status-badge{ color:#FFD08A; background:#3A2A0F; }
+
   /* ---------- Course categories ---------- */
   .cat-tabs{ display:flex; gap:10px; flex-wrap:wrap; margin-bottom:40px; }
   .cat-tab{
@@ -844,6 +896,27 @@
     </div>
   </div>
 
+  <!-- ============ ACTIVE COHORTS — CURRENTLY TRAINING ============
+       TEMPORARY status update, posted 2026-09-24 per Shanel's request.
+       Remove this whole <div class="status-strip">...</div> block, and
+       the matching "Currently Training" .status-badge spans on the three
+       CVQ Electrical Installation course cards just below, once these
+       specific cohorts finish. Update the wording here first if the
+       cohort details change before then. -->
+  <div class="status-strip">
+    <div class="container">
+      <div class="status-strip-inner reveal">
+        <span class="status-dot" aria-hidden="true"></span>
+        <div>
+          <span class="status-label">Currently Training</span>
+          <p>Shan-Phill Training is actively running CVQ Electrical Installation Level 1 with Corinth Secondary School students, alongside two adult groups working through CVQ Electrical Installation Level 2 and Level 3.</p>
+          <!-- TEMPORARY — remove this line along with the rest of the .status-strip block once these cohorts finish -->
+          <a class="card-link" href="#contact">Ask about the next intake <span class="arrow">&rarr;</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- ============ COURSE DISCOVERY ============ -->
   <section class="section" id="training">
     <div class="container">
@@ -861,21 +934,33 @@
 
       <div class="course-panel active" id="panel-cvq" role="tabpanel" aria-labelledby="tab-cvq" tabindex="0">
         <article class="course-card">
-          <span class="course-type">CVQ &middot; Level 1</span>
+          <div class="course-card-tags">
+            <span class="course-type">CVQ &middot; Level 1</span>
+            <!-- TEMPORARY — remove this badge once the Corinth Secondary School cohort finishes -->
+            <span class="status-badge"><span class="status-dot" aria-hidden="true"></span>Currently Training</span>
+          </div>
           <h3>Electrical Installation (Level 1)</h3>
           <p>Foundational, hands-on training in residential electrical installation practices.</p>
           <div class="meta"><span>Duration: 3&ndash;4 months</span></div>
           <a class="card-link" href="#contact">Ask about this programme <span class="arrow">&rarr;</span></a>
         </article>
         <article class="course-card">
-          <span class="course-type">CVQ &middot; Level 2</span>
+          <div class="course-card-tags">
+            <span class="course-type">CVQ &middot; Level 2</span>
+            <!-- TEMPORARY — remove this badge once this adult-group cohort finishes -->
+            <span class="status-badge"><span class="status-dot" aria-hidden="true"></span>Currently Training</span>
+          </div>
           <h3>Electrical Installation (Level 2)</h3>
           <p>Builds on Level 1 with more advanced installation skills and procedures.</p>
           <div class="meta"><span>Duration: 3&ndash;4 months</span></div>
           <a class="card-link" href="#contact">Ask about this programme <span class="arrow">&rarr;</span></a>
         </article>
         <article class="course-card">
-          <span class="course-type">CVQ &middot; Level 3</span>
+          <div class="course-card-tags">
+            <span class="course-type">CVQ &middot; Level 3</span>
+            <!-- TEMPORARY — remove this badge once this adult-group cohort finishes -->
+            <span class="status-badge"><span class="status-dot" aria-hidden="true"></span>Currently Training</span>
+          </div>
           <h3>Electrical Installation (Level 3)</h3>
           <p>The advanced tier of the pathway, building toward full trade competency.</p>
           <div class="meta"><span>Duration: 3&ndash;4 months</span></div>
