@@ -300,9 +300,23 @@
   /* ---------- Header ---------- */
   header{
     position:sticky; top:0; z-index:100;
+    border-bottom:1px solid var(--line);
+  }
+  /* The blur/background live on a pseudo-element instead of on header itself.
+     backdrop-filter (like transform/filter/will-change) creates a new CSS
+     containing block on whatever element it's applied to. header is an
+     ancestor of nav.main-nav, which uses position:fixed to slide in as the
+     mobile menu — with backdrop-filter on header, "fixed" was resolving
+     against header's box instead of the viewport, so the mobile dropdown
+     opened clipped inside the header strip. Moving the filter to ::before
+     keeps the same glass-blur look but removes header from the
+     containing-block chain, so position:fixed on the mobile nav behaves
+     correctly again. */
+  header::before{
+    content:"";
+    position:absolute; inset:0; z-index:-1;
     background:var(--header-bg);
     backdrop-filter:saturate(180%) blur(14px);
-    border-bottom:1px solid var(--line);
   }
   .nav-wrap{
     display:flex; align-items:center; justify-content:space-between;
