@@ -537,9 +537,12 @@
     display:grid; grid-template-columns:repeat(3,1fr); gap:26px;
   }
   .course-panel{ display:none; }
-  .course-panel.active{ display:grid; grid-template-columns:repeat(3,1fr); gap:26px; }
+  .course-panel.active{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:26px; }
+  /* Grid children may shrink below their content width — stops a long word/link from
+     stretching a column (and the whole page) wider than the screen */
+  .course-panel > *{ min-width:0; }
   /* Certificate Courses panel has 2 cards, not 3 — avoid an empty third column on desktop */
-  #panel-cert.course-panel.active{ grid-template-columns:repeat(2,1fr); max-width:760px; }
+  #panel-cert.course-panel.active{ grid-template-columns:repeat(2,minmax(0,1fr)); max-width:760px; }
 
   .course-card{
     background:var(--surface); border:1px solid var(--line); border-radius:var(--radius-m);
@@ -575,10 +578,16 @@
   @media (max-width:620px){ .topic-list{ grid-template-columns:1fr; } }
 
   @media (max-width:940px){
-    .course-grid, .course-panel.active{ grid-template-columns:repeat(2,1fr); }
+    .course-grid, .course-panel.active{ grid-template-columns:repeat(2,minmax(0,1fr)); }
   }
+  /* Phones: every panel is a single column, cards stacked one on top of the other.
+     #panel-cert is listed explicitly — its desktop rule above uses an ID selector, which
+     outranks a plain .course-panel.active rule, so without this the two certificate
+     cards stayed side by side at ~170px each and pushed the page wider than the screen. */
   @media (max-width:620px){
-    .course-grid, .course-panel.active{ grid-template-columns:1fr; }
+    .course-grid, .course-panel.active, #panel-cert.course-panel.active{
+      grid-template-columns:minmax(0,1fr); max-width:none;
+    }
   }
 
   /* ---------- Why section ---------- */
