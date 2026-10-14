@@ -269,14 +269,14 @@
   @media (max-width:480px){
     .btn{ white-space:normal; text-align:center; }
   }
-  .btn-primary{ background:var(--blue); color:#fff; box-shadow:0 14px 30px -12px rgba(0,120,255,.55);}
-  .btn-primary:hover{ background:var(--blue-deep); transform:translateY(-2px); box-shadow:0 18px 34px -12px rgba(0,86,199,.6);}
+  .btn-primary{ background:var(--blue-deep); color:#fff; box-shadow:0 14px 30px -12px rgba(0,86,199,.55);}
+  .btn-primary:hover{ background:#00439C; transform:translateY(-2px); box-shadow:0 18px 34px -12px rgba(0,86,199,.6);}
   .btn-ghost-light{ border-color:rgba(255,255,255,.55); color:#fff; }
   .btn-ghost-light:hover{ border-color:#fff; background:rgba(255,255,255,.1); transform:translateY(-2px);}
   .btn-outline-navy{ border-color:var(--heading); color:var(--heading); }
   .btn-outline-navy:hover{ background:var(--navy); color:#fff; transform:translateY(-2px);}
-  .btn-green{ background:var(--green); color:#fff; box-shadow:0 14px 30px -12px rgba(0,147,58,.5);}
-  .btn-green:hover{ background:var(--green-deep); transform:translateY(-2px);}
+  .btn-green{ background:var(--green-deep); color:#fff; box-shadow:0 14px 30px -12px rgba(0,117,46,.5);}
+  .btn-green:hover{ background:#005C24; transform:translateY(-2px);}
   .btn-disabled{ border:2px dashed var(--line); color:var(--ink-soft); cursor:default; }
   .btn-sm{ padding:11px 20px; font-size:14px; }
 
@@ -451,7 +451,7 @@
   .trust-item .num-mark{
     width:34px; height:34px; margin-bottom:14px;
   }
-  .trust-item h4{ font-size:17px; margin-bottom:6px; }
+  .trust-item .trust-title{ font-family:'Fraunces',serif; font-weight:600; line-height:1.08; letter-spacing:-0.01em; color:var(--heading); font-size:17px; margin-bottom:6px; }
   .trust-item p{ font-size:14px; }
 
   @media (max-width:900px){
@@ -762,10 +762,12 @@
     font-family:'Inter',sans-serif; font-size:15px; color:var(--ink); background:var(--surface);
     transition:border-color .2s var(--ease);
   }
-  .field input:focus, .field select:focus{ outline:none; border-color:var(--blue); }
+  .field input:focus, .field select:focus{ outline:3px solid var(--accent-blue); outline-offset:2px; border-color:var(--accent-blue); }
   .field select{ appearance:none; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9'%3E%3Cpath d='M1 1L7 7L13 1' stroke='%234B5866' stroke-width='1.6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:right 16px center; padding-right:40px; }
   .field-error{ font-size:12.5px; color:#C0392B; margin-top:6px; display:none; }
   .field.invalid input, .field.invalid select{ border-color:#C0392B; }
+  html[data-theme="dark"] .field-error{ color:#FF8F80; }
+  html[data-theme="dark"] .field.invalid input, html[data-theme="dark"] .field.invalid select{ border-color:#FF8F80; }
   .field.invalid .field-error{ display:block; }
 
   .apply-actions{ display:flex; align-items:center; justify-content:space-between; margin-top:8px; gap:12px; }
@@ -897,22 +899,22 @@
       <div class="trust-row reveal">
         <div class="trust-item">
           <svg class="num-mark" viewBox="0 0 34 34" fill="none"><path d="M4 14L17 7L30 14L17 21L4 14Z" stroke="#0078FF" stroke-width="2.2" stroke-linejoin="round"/><path d="M9 17V24C9 24 12 27 17 27C22 27 25 24 25 24V17" stroke="#0078FF" stroke-width="2.2" stroke-linecap="round"/></svg>
-          <h4>Practical training</h4>
+          <div class="trust-title">Practical training</div>
           <p>Learning built around real tasks, tools and procedures &mdash; not just theory.</p>
         </div>
         <div class="trust-item">
           <svg class="num-mark" viewBox="0 0 34 34" fill="none"><path d="M17 4L20.5 12.5L29 14L22.5 20L24.5 29L17 24.5L9.5 29L11.5 20L5 14L13.5 12.5L17 4Z" stroke="#00933A" stroke-width="2.2" stroke-linejoin="round"/></svg>
-          <h4>Licensed institution</h4>
+          <div class="trust-title">Licensed institution</div>
           <p>Operating under a Ministry of Education permit in Saint Lucia.</p>
         </div>
         <div class="trust-item">
           <svg class="num-mark" viewBox="0 0 34 34" fill="none"><rect x="6" y="6" width="22" height="22" rx="4" stroke="#0078FF" stroke-width="2.2"/><path d="M12 17L15.5 20.5L23 13" stroke="#0078FF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          <h4>CVQ &amp; Vocational Training</h4>
+          <div class="trust-title">CVQ &amp; Vocational Training</div>
           <p>Electrical installation qualifications, recognized across CARICOM.</p>
         </div>
         <div class="trust-item">
           <svg class="num-mark" viewBox="0 0 34 34" fill="none"><path d="M6 27V13L17 6L28 13V27" stroke="#00933A" stroke-width="2.2" stroke-linejoin="round"/><path d="M13 27V18H21V27" stroke="#00933A" stroke-width="2.2"/></svg>
-          <h4>Individuals &amp; organizations</h4>
+          <div class="trust-title">Individuals &amp; organizations</div>
           <p>Training for career growth and for workforce development.</p>
         </div>
       </div>
@@ -1420,6 +1422,14 @@ document.addEventListener('DOMContentLoaded', function() {
     mainNav.classList.remove('open');
     menuToggle.setAttribute('aria-expanded', 'false');
   }));
+  // Escape closes the open mobile menu and returns focus to the menu button (keyboard users)
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && mainNav.classList.contains('open')) {
+      mainNav.classList.remove('open');
+      menuToggle.setAttribute('aria-expanded', 'false');
+      menuToggle.focus();
+    }
+  });
 
   // Course category tabs — supports mouse click and full keyboard operation
   // (Left/Right/Home/End), per the WAI-ARIA tabs pattern: only the selected
