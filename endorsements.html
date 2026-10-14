@@ -329,7 +329,7 @@
   .letter-actions{ display:flex; gap:20px; flex-wrap:wrap; margin-top:22px; }
   .letter-link{
     display:inline-flex; align-items:center; gap:7px; font-size:13.5px; font-weight:700;
-    color:var(--blue); text-decoration:none;
+    color:var(--accent-blue); text-decoration:none;
   }
   .letter-link:hover{ text-decoration:underline; }
 
@@ -381,7 +381,9 @@
   .footer-desc{ font-size:14.5px; line-height:1.7; max-width:36ch; color:#93A5BB;}
   .footer-bottom{ margin-top:56px; padding-top:26px; border-top:1px solid rgba(255,255,255,.1); display:flex; justify-content:space-between; flex-wrap:wrap; gap:14px; font-size:13.5px; color:#7C90A8; }
   @media (max-width:860px){ .footer-grid{ grid-template-columns:1fr 1fr; } }
-  @media (max-width:560px){ .footer-grid{ grid-template-columns:1fr; } }
+  @media (max-width:560px){ .footer-grid{ grid-template-columns:minmax(0,1fr); } }
+  .footer-grid > *{ min-width:0; }
+  .footer-desc{ overflow-wrap:anywhere; }
 
   /* ---------- reveal on scroll ---------- */
   .reveal{ opacity:0; transform:translateY(18px); transition:opacity .7s var(--ease), transform .7s var(--ease); }
@@ -765,6 +767,14 @@ document.addEventListener('DOMContentLoaded', function() {
     mainNav.classList.remove('open');
     menuToggle.setAttribute('aria-expanded', 'false');
   }));
+  // Escape closes the open mobile menu and returns focus to the menu button (keyboard users)
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && mainNav.classList.contains('open')) {
+      mainNav.classList.remove('open');
+      menuToggle.setAttribute('aria-expanded', 'false');
+      menuToggle.focus();
+    }
+  });
 
   // Scroll reveal
   const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
